@@ -1,0 +1,25 @@
+/* Base */
+@import "./base/_variables.css";
+@import "./base/_reset.css";
+@import "./base/_typography.css";
+
+/* Utils */
+@import "./utils/_animations.css";
+@import "./utils/_media-queries.css";
+
+/* Components */
+@import "./components/_button.css";
+@import "./components/_card.css";
+@import "./components/_sidebar.css";
+@import "./components/_menu.css";
+
+/* Layout */
+@import "./layout/_container.css";
+@import "./layout/_section.css";
+@import "./layout/_main.css";
+
+/* Sections */
+@import "./sections/_about.css";
+@import "./sections/_contact.css";
+@import "./sections/_skills.css";
+@import "./sections/_work.css";

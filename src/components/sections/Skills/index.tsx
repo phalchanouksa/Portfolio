@@ -26,7 +26,7 @@ const Skills: FC = () => {
           animateSkills();
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -48,38 +48,40 @@ const Skills: FC = () => {
   };
 
   return (
-    <section id="skills" className="section" ref={sectionRef}>
-      <div className="section-content">
-        <h1>Skills & Expertise</h1>
-        <div className="skills-container">
-          <div className="skills-group">
-            <h3>Development</h3>
-            <div className="skills-grid">
-              {skills.map((skill) => (
-                <div
-                  key={skill.name}
-                  className="skill-card"
-                  data-percentage={skill.percentage}
-                >
-                  <div className="skill-icon">
-                    <i className={skill.icon} />
-                  </div>
-                  <div className="skill-info">
-                    <span className="skill-name">{skill.name}</span>
-                    <div className="skill-bar">
-                      <div className="skill-progress" />
+    <div className="layout">
+      <section id="skills" className="section" ref={sectionRef}>
+        <div className="section-content">
+          <h1>Skills & Expertise</h1>
+          <div className="skills-container">
+            <div className="skills-group">
+              <h3>Development</h3>
+              <div className="skills-grid">
+                {skills.map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="skill-card"
+                    data-percentage={skill.percentage}
+                  >
+                    <div className="skill-icon">
+                      <i className={skill.icon} />
                     </div>
-                    <span className="skill-percentage">
-                      {skill.percentage}%
-                    </span>
+                    <div className="skill-info">
+                      <span className="skill-name">{skill.name}</span>
+                      <div className="skill-bar">
+                        <div className="skill-progress" />
+                      </div>
+                      <span className="skill-percentage">
+                        {skill.percentage}%
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

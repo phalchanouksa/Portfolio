@@ -13,9 +13,14 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@types/styled-components": "^5.1.34",
+    "framer-motion": "^12.4.2",
+    "gsap": "^3.12.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-intersection-observer": "^9.15.1",
     "react-router-dom": "^7.1.5",
+    "styled-components": "^6.1.15",
     "three": "^0.173.0",
     "three-stdlib": "^2.35.13"
   },

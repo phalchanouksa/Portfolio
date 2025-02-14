@@ -4,10 +4,10 @@ import About from "./components/sections/About";
 import Work from "./components/sections/Work";
 import Skills from "./components/sections/Skills";
 import Contact from "./components/sections/Contact";
-import "./App.css";
+
 import { AppProvider } from "./context/AppContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AboutDetails } from "./components/sections/About/AboutDetails"; // Correct import
+import AboutDetails from "./components/sections/About/AboutDetails"; // Correct import
 
 const App: FC = () => {
   return (
