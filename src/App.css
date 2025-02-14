@@ -249,8 +249,7 @@ html {
   overflow: hidden;
   background: rgba(255, 255, 255, 0.03);
 }
-.menu a:hover,
-.menu a.active {
+.menu a:hover {
   color: #63daf9;
   background: rgba(99, 218, 249, 0.1);
   transform: translateX(10px);
@@ -304,10 +303,10 @@ html {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.menu a.active {
+/* .menu a.active {
   border-left: 4px solid #63daf9;
   padding-left: calc(1.5rem - 4px);
-}
+} */
 .social-links a:hover::after {
   opacity: 0.2;
 }
@@ -455,10 +454,10 @@ html {
   width: 100%;
 }
 
-.menu a.active {
+/* .menu a.active {
   color: #63daf9;
   transform: scale(1.05);
-}
+} */
 
 /* Section Headers Animation */
 .section h1 {
@@ -1415,11 +1414,11 @@ html {
   -webkit-text-fill-color: transparent;
 }
 
-.menu a.active {
+/* .menu a.active {
   font-weight: bold;
   color: #1e81b0;
   text-shadow: 0 0 10px rgba(30, 129, 176, 0.5);
-}
+} */
 
 /* Underline Animation */
 .menu a::after {
