@@ -6,17 +6,29 @@ import Skills from "./components/sections/Skills";
 import Contact from "./components/sections/Contact";
 import "./App.css";
 import { AppProvider } from "./context/AppContext";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AboutDetails } from "./components/sections/About/AboutDetails"; // Correct import
 
 const App: FC = () => {
   return (
-    <AppProvider>
-      <Layout>
-        <About />
-        <Work />
-        <Skills />
-        <Contact />
-      </Layout>
-    </AppProvider>
+    <Router>
+      <AppProvider>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <About />
+                <Work />
+                <Skills />
+                <Contact />
+              </Layout>
+            }
+          />
+          <Route path="/about-details" element={<AboutDetails />} />
+        </Routes>
+      </AppProvider>
+    </Router>
   );
 };
 
