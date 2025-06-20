@@ -1,3 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+.hide-cursor { cursor: none; }
 :root {
   --background: #fdfdfd;
   --foreground: #333;
@@ -7,7 +13,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body, Georgia, serif);
+  font-family: var(--font-body, sans-serif);
   line-height: 1.6;
 }
 

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Merriweather } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import '../app/globals.css';
 import Layout from '@/components/Layout';
 
-const merriweather = Merriweather({
+const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '600', '700'],
   variable: '--font-body',
 });
 
@@ -14,12 +14,10 @@ export const metadata: Metadata = {
   description: 'Personal portfolio built with Next.js',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={merriweather.variable}>
+      <body className={poppins.variable}>
         <Layout>{children}</Layout>
       </body>
     </html>
