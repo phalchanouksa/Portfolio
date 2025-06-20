@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
-import '../app/globals.css';
+// Import global styles from the same directory so Tailwind CSS classes are included
+import './globals.css';
 import Layout from '@/components/Layout';
 
 const poppins = Poppins({
