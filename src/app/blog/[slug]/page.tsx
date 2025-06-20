@@ -2,16 +2,21 @@ import { notFound } from 'next/navigation';
 import SEO from '@/components/SEO';
 import { getPostSlugs, getPostData } from '@/lib/posts';
 
+interface PageProps<T> {
+  params: Promise<T>
+}
+
 export const dynamic = 'force-static';
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const slugs = await getPostSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
-export default async function Post({ params }: { params: { slug: string } }) {
+export default async function Post({ params }: PageProps<{ slug: string }>) {
   try {
-    const post = await getPostData(params.slug);
+    const { slug } = await params;
+    const post = await getPostData(slug);
     return (
       <>
         <SEO title={post.title} description={post.title} />

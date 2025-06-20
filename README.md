@@ -23,3 +23,7 @@ npm run build && npm run export
 ```
 
 The generated site is available in the `out` directory. Use `npm run deploy` to push the contents to the `gh-pages` branch.
+
+### Vercel Deployment
+
+This repository includes a `vercel.json` file that sets the build output directory to `out`. If your Vercel project expects a different directory, update the project settings or adjust this configuration.
