@@ -1,14 +1,15 @@
+import Image from 'next/image';
+import styles from './page.module.css';
+
 export default function Home() {
   return (
-    <section className="text-center space-y-4">
-      <h1 className="text-3xl font-bold">Hi, I&apos;m Jane Doe</h1>
-      <p className="max-w-xl mx-auto">
-        Welcome to my personal portfolio built with Next.js. Here you&apos;ll find
-        my latest projects and writings.
-      </p>
-      <div className="flex justify-center gap-4">
-        <a href="https://github.com" className="text-blue-600 hover:underline">GitHub</a>
-        <a href="https://twitter.com" className="text-blue-600 hover:underline">Twitter</a>
+    <section className={styles.container}>
+      <Image src="/vercel.svg" alt="Profile" width={150} height={150} className={styles.avatar} />
+      <h1>Hi, I'm Jane Doe</h1>
+      <p>Welcome to my personal portfolio built with Next.js. Here you'll find my latest writings.</p>
+      <div className={styles.links}>
+        <a href="https://github.com">GitHub</a>
+        <a href="https://twitter.com">Twitter</a>
       </div>
     </section>
   );
