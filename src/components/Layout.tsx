@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { ReactNode, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import Cursor from './Cursor';
+import styles from './Layout.module.css';
 
 export default function Layout({ children }: { children: ReactNode }) {
   const [showNav, setShowNav] = useState(true);
@@ -19,20 +19,19 @@ export default function Layout({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col font-body bg-white text-gray-800 hide-cursor">
-      <Cursor />
+    <div className={styles.container}>
       <motion.header
-        className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50"
+        className={styles.header}
         animate={{ y: showNav ? 0 : '-100%' }}
         transition={{ duration: 0.3 }}
       >
-        <nav className="max-w-4xl mx-auto flex gap-6 p-4 font-semibold">
+        <nav className={styles.nav}>
           <Link href="/">Home</Link>
           <Link href="/blog">Blog</Link>
         </nav>
       </motion.header>
-      <main className="flex-1 pt-20 px-4">{children}</main>
-      <footer className="text-center py-6 text-sm bg-gray-100">
+      <main className={styles.main}>{children}</main>
+      <footer className={styles.footer}>
         &copy; {new Date().getFullYear()} My Portfolio
       </footer>
     </div>
