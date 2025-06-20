@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-This project is a simple portfolio website built with **Next.js** and Tailwind CSS. Blog posts are written in Markdown and exported as a static site so it can be deployed to GitHub Pages.
+This project is a simple portfolio website built with **Next.js**. Blog posts are written in Markdown and exported as a static site so it can be deployed to GitHub Pages.
 
 ## Scripts
 
