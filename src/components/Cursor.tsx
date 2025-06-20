@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import styles from './Cursor.module.css';
 
 export default function Cursor() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -15,7 +16,7 @@ export default function Cursor() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed top-0 left-0 z-50 w-6 h-6 border-2 border-gray-800 rounded-full"
+      className={styles.cursor}
       animate={{ x: pos.x - 12, y: pos.y - 12 }}
       transition={{ type: 'spring', mass: 0.5 }}
     />

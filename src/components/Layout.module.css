@@ -1,0 +1,41 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body, sans-serif);
+  background: #fff;
+  color: var(--foreground);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 50;
+}
+
+.nav {
+  max-width: 56rem;
+  margin: 0 auto;
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem;
+  font-weight: 600;
+}
+
+.main {
+  flex: 1;
+  padding-top: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 0.875rem;
+  background: #f3f3f3;
+}

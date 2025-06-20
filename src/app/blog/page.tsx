@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import SEO from '@/components/SEO';
 import { getSortedPostsMeta } from '@/lib/posts';
+import styles from './page.module.css';
 
 export const metadata = { title: 'Blog' };
 
@@ -9,15 +10,15 @@ export default async function Blog() {
   return (
     <>
       <SEO title="Blog" description="Blog posts" />
-      <div className="max-w-2xl mx-auto px-4">
-        <h1 className="text-4xl font-bold my-8">Blog</h1>
-        <ul className="space-y-4">
+      <div className={styles.container}>
+        <h1 className={styles.title}>Blog</h1>
+        <ul className={styles.list}>
           {posts.map((post) => (
-            <li key={post.slug} className="flex justify-between">
-              <Link href={`/blog/${post.slug}`} className="text-blue-600 underline font-medium">
+            <li key={post.slug} className={styles.item}>
+              <Link href={`/blog/${post.slug}`} className={styles.link}>
                 {post.title}
               </Link>
-              <span className="text-gray-500 text-sm">{post.date}</span>
+              <span className={styles.date}>{post.date}</span>
             </li>
           ))}
         </ul>
