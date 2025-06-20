@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
+import SEO from '@/components/SEO';
 import { getPostSlugs, getPostData } from '@/lib/posts';
-import styles from './page.module.css';
 
 export const dynamic = 'force-static';
 
@@ -9,15 +9,18 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export default async function Post({ params }: any) {
+export default async function Post({ params }: { params: { slug: string } }) {
   try {
     const post = await getPostData(params.slug);
     return (
-      <article className={styles.article}>
-        <h1>{post.title}</h1>
-        <p className={styles.date}>{post.date}</p>
-        <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
-      </article>
+      <>
+        <SEO title={post.title} description={post.title} />
+        <article className="prose mx-auto px-4">
+          <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
+          <p className="text-gray-500 text-sm mb-8">{post.date}</p>
+          <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+        </article>
+      </>
     );
   } catch {
     notFound();
