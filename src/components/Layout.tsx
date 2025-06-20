@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { ReactNode, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import Cursor from './Cursor';
 import styles from './Layout.module.css';
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -20,8 +19,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div className={`${styles.container} hide-cursor`}>
-      <Cursor />
+    <div className={styles.container}>
       <motion.header
         className={styles.header}
         animate={{ y: showNav ? 0 : '-100%' }}

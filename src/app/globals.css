@@ -1,6 +1,5 @@
 
 html { scroll-behavior: smooth; }
-.hide-cursor { cursor: none; }
 :root {
   --background: #fdfdfd;
   --foreground: #333;

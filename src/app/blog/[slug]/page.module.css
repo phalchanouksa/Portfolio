@@ -1,7 +1,8 @@
 .article {
   max-width: 65ch;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1rem 2rem;
+  line-height: 1.7;
 }
 
 .title {

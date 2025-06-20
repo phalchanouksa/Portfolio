@@ -16,8 +16,8 @@ export default function Home() {
         <h1 className={styles.title}>Jane Doe</h1>
         <p className={styles.description}>Welcome to my personal portfolio built with Next.js. Here you&#39;ll find my latest writings.</p>
         <div className={styles.links}>
-          <a href="https://github.com" className={styles.underline}>GitHub</a>
-          <a href="https://twitter.com" className={styles.underline}>Twitter</a>
+          <a href="https://github.com">GitHub</a>
+          <a href="https://twitter.com">Twitter</a>
         </div>
       </motion.section>
     </>
