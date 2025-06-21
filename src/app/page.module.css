@@ -35,8 +35,13 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.profileTilt {
+
+.canvasWrap {
+  height: 200px;
+  width: 200px;
   border-radius: 9999px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .title {

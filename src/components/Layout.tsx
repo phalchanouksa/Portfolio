@@ -1,8 +1,11 @@
 'use client';
 import Link from 'next/link';
 import { ReactNode, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Layout.module.css';
+import CommandMenu from './CommandMenu';
+import Button from './ui/button';
+import Cursor from './Cursor';
 
 export default function Layout({ children }: { children: ReactNode }) {
   const [showNav, setShowNav] = useState(true);
@@ -33,15 +36,25 @@ export default function Layout({ children }: { children: ReactNode }) {
             Jane
           </Link>
           <nav className={styles.nav}>
-            <Link href="/">Home</Link>
-            <Link href="/blog">Blog</Link>
+            <Button variant="outline" size="sm">
+              <Link href="/">Home</Link>
+            </Button>
+            <Button variant="outline" size="sm">
+              <Link href="/blog">Blog</Link>
+            </Button>
           </nav>
         </div>
       </motion.header>
-      <main className={styles.main}>{children}</main>
+      <AnimatePresence mode="wait">
+        <motion.main key={typeof window !== 'undefined' ? location.pathname : ''} className={styles.main} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          {children}
+        </motion.main>
+      </AnimatePresence>
       <footer className={styles.footer}>
         &copy; {new Date().getFullYear()} My Portfolio
       </footer>
+      <CommandMenu />
+      <Cursor />
     </div>
   );
 }
