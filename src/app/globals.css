@@ -16,6 +16,11 @@ body {
   cursor: none;
 }
 
+a,
+button {
+  cursor: none;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -39,11 +44,13 @@ a:hover {
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 1000;
-  transition: transform 0.15s ease, width 0.15s ease, height 0.15s ease;
+  transition: transform 0.15s ease, width 0.15s ease, height 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .custom-cursor.hover {
   width: 24px;
   height: 24px;
   transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 0 8px rgba(29, 78, 216, 0.8), 0 0 16px rgba(29, 78, 216, 0.6);
 }

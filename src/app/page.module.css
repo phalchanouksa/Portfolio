@@ -7,11 +7,18 @@
   gap: 1.5rem;
   text-align: center;
   padding: 0 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: linear-gradient(135deg, #e0ecff, #ffffff, #ffe4e1);
   background-size: 200% 200%;
   animation: gradientShift 10s ease infinite;
-  position: relative;
-  overflow: hidden;
+  z-index: -2;
 }
 
 @keyframes gradientShift {
@@ -39,6 +46,8 @@
 
 
 .canvasWrap {
+  position: relative;
+  z-index: 1;
   height: 200px;
   width: 200px;
   border-radius: 9999px;
@@ -48,6 +57,8 @@
 }
 
 .title {
+  position: relative;
+  z-index: 1;
   font-size: 2.25rem;
   font-weight: 700;
   background: linear-gradient(90deg, #0ea5e9, #3b82f6, #9333ea);
@@ -76,12 +87,16 @@
 }
 
 .description {
+  position: relative;
+  z-index: 1;
   max-width: 36rem;
   font-size: 1.125rem;
   color: #555;
 }
 
 .links {
+  position: relative;
+  z-index: 1;
   display: flex;
   gap: 1rem;
   font-weight: 600;
@@ -106,7 +121,7 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
 }
 
