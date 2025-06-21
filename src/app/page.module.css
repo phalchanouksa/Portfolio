@@ -10,6 +10,8 @@
   background: linear-gradient(135deg, #e0ecff, #ffffff, #ffe4e1);
   background-size: 200% 200%;
   animation: gradientShift 10s ease infinite;
+  position: relative;
+  overflow: hidden;
 }
 
 @keyframes gradientShift {
@@ -98,4 +100,50 @@
 .links a:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.bubbles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.bubbles span {
+  position: absolute;
+  display: block;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.4), transparent 70%);
+  border-radius: 50%;
+  animation: float 20s linear infinite;
+}
+
+.bubbles span:nth-child(1) {
+  top: 10%;
+  left: 5%;
+  animation-duration: 25s;
+}
+.bubbles span:nth-child(2) {
+  top: 60%;
+  left: 80%;
+  animation-duration: 18s;
+}
+.bubbles span:nth-child(3) {
+  top: 30%;
+  left: 50%;
+  animation-duration: 22s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-40px) scale(1.2);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }

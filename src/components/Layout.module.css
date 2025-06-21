@@ -63,6 +63,10 @@
   font-weight: 600;
 }
 
+.nav div {
+  display: inline-block;
+}
+
 .nav a {
   position: relative;
   color: var(--foreground);

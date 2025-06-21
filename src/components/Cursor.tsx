@@ -10,6 +10,13 @@ export default function Cursor() {
       cursor.setAttribute('style', `left:${e.clientX}px; top:${e.clientY}px`);
     };
     window.addEventListener('mousemove', move);
+    const addHoverEvents = () => {
+      document.querySelectorAll('a, button').forEach((el) => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+      });
+    };
+    addHoverEvents();
     return () => {
       window.removeEventListener('mousemove', move);
       cursor.remove();

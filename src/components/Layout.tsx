@@ -35,8 +35,12 @@ export default function Layout({ children }: { children: ReactNode }) {
             Jane
           </Link>
           <nav className={styles.nav}>
-            <Link href="/">Home</Link>
-            <Link href="/blog">Blog</Link>
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+              <Link href="/">Home</Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+              <Link href="/blog">Blog</Link>
+            </motion.div>
           </nav>
         </div>
       </motion.header>

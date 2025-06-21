@@ -21,6 +21,11 @@ export default function Home() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
       >
+        <div className={styles.bubbles} aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} glareEnable glareMaxOpacity={0.2} className={styles.canvasWrap}>
           <Canvas style={{ height: 200, width: 200 }}>
             <Suspense fallback={null}>
