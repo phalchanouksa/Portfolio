@@ -32,11 +32,12 @@
   color: var(--foreground);
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .nav a:hover {
   background: rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
 }
 
 .main {
