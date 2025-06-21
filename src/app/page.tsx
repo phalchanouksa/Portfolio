@@ -1,10 +1,7 @@
 'use client';
 import SEO from '@/components/SEO';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Text3D } from '@react-three/drei';
-import { Suspense } from 'react';
-import Tilt from 'react-parallax-tilt';
+
 import styles from './page.module.css';
 
 export default function Home() {
@@ -26,19 +23,7 @@ export default function Home() {
           <span></span>
           <span></span>
         </div>
-        <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} glareEnable glareMaxOpacity={0.2} className={styles.canvasWrap}>
-          <Canvas style={{ height: 200, width: 200 }} frameloop="demand" dpr={[1, 1.5]} camera={{ position: [0, 0, 4] }}>
-            <Suspense fallback={null}>
-              <ambientLight intensity={0.6} />
-              <directionalLight position={[0, 0, 2]} />
-              <OrbitControls enableZoom={false} />
-              <Text3D font="/helvetiker_regular.typeface.json" size={1} height={0.3} bevelEnabled bevelSize={0.02} bevelThickness={0.02}>
-                Ouksa
-                <meshStandardMaterial color="#4f46e5" metalness={0.8} roughness={0.2} />
-              </Text3D>
-            </Suspense>
-          </Canvas>
-        </Tilt>
+        {/* Logo removed as requested */}
         <h1 className={styles.title}>Jane Doe</h1>
         <p className={styles.description}>Welcome to my personal portfolio built with Next.js. Here you&#39;ll find my latest writings.</p>
         <div className={styles.links}>

@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ReactNode, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Layout.module.css';
@@ -10,6 +9,7 @@ import Cursor from './Cursor';
 export default function Layout({ children }: { children: ReactNode }) {
   const [showNav, setShowNav] = useState(true);
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
     let last = window.scrollY;
@@ -23,6 +23,18 @@ export default function Layout({ children }: { children: ReactNode }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark' || stored === 'light') {
+      setTheme(stored as 'light' | 'dark');
+    }
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
   return (
     <div className={styles.container}>
       <motion.header
@@ -32,15 +44,14 @@ export default function Layout({ children }: { children: ReactNode }) {
         transition={{ duration: 0.3 }}
       >
         <div className={styles.navContainer}>
-          <Link href="/" className={styles.logo}>
-            <Image
-              src="/developer.svg"
-              alt="Developer"
-              width={40}
-              height={40}
-              className={styles.logoImage}
-            />
-          </Link>
+          <Link href="/" className={`${styles.logo} ${styles.logoText}`}>Ouksa</Link>
+          <button
+            className={styles.themeToggle}
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            aria-label="Toggle dark mode"
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
           <nav className={styles.nav}>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
               <Link href="/">Home</Link>

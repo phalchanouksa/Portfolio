@@ -46,16 +46,6 @@
 }
 
 
-.canvasWrap {
-  position: relative;
-  z-index: 1;
-  height: 200px;
-  width: 200px;
-  border-radius: 9999px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  will-change: transform;
-}
 
 .title {
   position: relative;
