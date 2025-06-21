@@ -56,6 +56,12 @@
   text-decoration: none;
 }
 
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .themeToggle {
   background: none;
   border: none;

@@ -45,21 +45,23 @@ export default function Layout({ children }: { children: ReactNode }) {
       >
         <div className={styles.navContainer}>
           <Link href="/" className={`${styles.logo} ${styles.logoText}`}>Ouksa</Link>
-          <button
-            className={styles.themeToggle}
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            aria-label="Toggle dark mode"
-          >
-            {theme === 'dark' ? '☀️' : '🌙'}
-          </button>
-          <nav className={styles.nav}>
-            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-              <Link href="/">Home</Link>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-              <Link href="/blog">Blog</Link>
-            </motion.div>
-          </nav>
+          <div className={styles.menu}>
+            <nav className={styles.nav}>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                <Link href="/">Home</Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                <Link href="/blog">Blog</Link>
+              </motion.div>
+            </nav>
+            <button
+              className={styles.themeToggle}
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              aria-label="Toggle dark mode"
+            >
+              {theme === 'dark' ? '☀️' : '🌙'}
+            </button>
+          </div>
         </div>
       </motion.header>
       <AnimatePresence mode="wait">
