@@ -12,31 +12,6 @@
   will-change: transform;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #e0ecff, #ffffff, #ffe4e1);
-  background-size: 200% 200%;
-  animation: gradientShift 15s ease infinite;
-  z-index: -2;
-}
-
-[data-theme='dark'] .hero::before {
-  background: linear-gradient(135deg, #0d1117, #1a1d23, #222033);
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 .profile {
   border-radius: 9999px;
@@ -51,16 +26,13 @@
 
 
 
+
 .title {
   position: relative;
   z-index: 1;
   font-size: 2.25rem;
   font-weight: 700;
-  background: linear-gradient(90deg, #0ea5e9, #3b82f6, #9333ea);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientText 6s linear infinite;
+  color: var(--accent);
 }
 
 @keyframes gradientText {

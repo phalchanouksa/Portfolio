@@ -84,6 +84,31 @@ export default function Home() {
           Feel free to reach out if you&#39;d like to collaborate or just say hello.
         </p>
       </motion.section>
+      <motion.section
+        className={styles.section}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.25 }}
+      >
+        <h2 className={styles.sectionTitle}>Experience</h2>
+        <p className={styles.sectionText}>
+          I've worked on numerous freelance projects ranging from simple landing pages to full-stack applications. My focus is always on clean code and intuitive interfaces.
+        </p>
+      </motion.section>
+
+      <motion.section
+        className={styles.section}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.3 }}
+      >
+        <h2 className={styles.sectionTitle}>Testimonials</h2>
+        <p className={styles.sectionText}>
+          "Working with Jane was a pleasure. Her attention to detail and creative approach brought our project to life." – Happy Client
+        </p>
+      </motion.section>
     </>
   );
 }
