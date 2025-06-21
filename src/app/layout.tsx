@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
-// Import global styles from the same directory so Tailwind CSS classes are included
+// Import global styles
 import './globals.css';
 import Layout from '@/components/Layout';
 
