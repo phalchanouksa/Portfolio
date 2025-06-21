@@ -162,3 +162,29 @@
     transform: translateY(0) scale(1);
   }
 }
+
+.section {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1rem;
+  gap: 1rem;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #0ea5e9, #3b82f6, #9333ea);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 6s linear infinite;
+}
+
+.sectionText {
+  max-width: 40rem;
+  color: #444;
+}

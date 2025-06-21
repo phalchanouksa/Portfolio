@@ -2,7 +2,7 @@
 import SEO from '@/components/SEO';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, TorusKnot, Environment } from '@react-three/drei';
+import { OrbitControls, Text3D, Environment } from '@react-three/drei';
 import { Suspense } from 'react';
 import Tilt from 'react-parallax-tilt';
 import styles from './page.module.css';
@@ -32,9 +32,10 @@ export default function Home() {
               <ambientLight intensity={0.6} />
               <directionalLight position={[0, 0, 2]} />
               <OrbitControls enableZoom={false} />
-              <TorusKnot args={[1, 0.3, 128, 32]} rotation={[0.2, 0.4, 0]}>
+              <Text3D font="/helvetiker_regular.typeface.json" size={1} height={0.3} bevelEnabled bevelSize={0.02} bevelThickness={0.02}>
+                Ouksa
                 <meshStandardMaterial color="#4f46e5" metalness={0.8} roughness={0.2} />
-              </TorusKnot>
+              </Text3D>
               <Environment preset="city" />
             </Suspense>
           </Canvas>
@@ -45,6 +46,46 @@ export default function Home() {
           <a href="https://github.com">GitHub</a>
           <a href="https://twitter.com">Twitter</a>
         </div>
+      </motion.section>
+      <motion.section
+        className={styles.section}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className={styles.sectionTitle}>About Me</h2>
+        <p className={styles.sectionText}>
+          I am a web developer passionate about building modern interactive
+          experiences. This portfolio showcases my latest work and writings.
+        </p>
+      </motion.section>
+
+      <motion.section
+        className={styles.section}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+      >
+        <h2 className={styles.sectionTitle}>Projects</h2>
+        <p className={styles.sectionText}>
+          From small experiments to large-scale applications, my projects
+          explore creative uses of technology and thoughtful design.
+        </p>
+      </motion.section>
+
+      <motion.section
+        className={styles.section}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <h2 className={styles.sectionTitle}>Get in Touch</h2>
+        <p className={styles.sectionText}>
+          Feel free to reach out if you&#39;d like to collaborate or just say hello.
+        </p>
       </motion.section>
     </>
   );
