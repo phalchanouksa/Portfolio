@@ -1,6 +1,8 @@
 'use client';
 import SEO from '@/components/SEO';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import HeroBackground from '@/components/HeroBackground';
+import ParallaxSection from '@/components/ParallaxSection';
 
 import styles from './page.module.css';
 
@@ -18,6 +20,7 @@ export default function Home() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4 }}
       >
+        <HeroBackground />
         <div className={styles.bubbles} aria-hidden="true">
           <span></span>
           <span></span>
@@ -31,84 +34,48 @@ export default function Home() {
           <a href="https://twitter.com">Twitter</a>
         </div>
       </motion.section>
-      <motion.section
-        className={styles.section}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4 }}
-      >
+      <ParallaxSection className={styles.section}>
         <h2 className={styles.sectionTitle}>About Me</h2>
         <p className={styles.sectionText}>
           I am a web developer passionate about building modern interactive
           experiences. This portfolio showcases my latest work and writings.
         </p>
-      </motion.section>
+      </ParallaxSection>
 
-      <motion.section
-        className={styles.section}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.15 }}
-      >
+      <ParallaxSection className={styles.section} delay={0.15}>
         <h2 className={styles.sectionTitle}>Skills</h2>
         <p className={styles.sectionText}>
           JavaScript, React, Three.js, and modern CSS techniques are some of the tools I use daily.
         </p>
-      </motion.section>
+      </ParallaxSection>
 
-      <motion.section
-        className={styles.section}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.1 }}
-      >
+      <ParallaxSection className={styles.section} delay={0.1}>
         <h2 className={styles.sectionTitle}>Projects</h2>
         <p className={styles.sectionText}>
           From small experiments to large-scale applications, my projects
           explore creative uses of technology and thoughtful design.
         </p>
-      </motion.section>
+      </ParallaxSection>
 
-      <motion.section
-        className={styles.section}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.2 }}
-      >
+      <ParallaxSection className={styles.section} delay={0.2}>
         <h2 className={styles.sectionTitle}>Get in Touch</h2>
         <p className={styles.sectionText}>
           Feel free to reach out if you&#39;d like to collaborate or just say hello.
         </p>
-      </motion.section>
-      <motion.section
-        className={styles.section}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.25 }}
-      >
+      </ParallaxSection>
+      <ParallaxSection className={styles.section} delay={0.25}>
         <h2 className={styles.sectionTitle}>Experience</h2>
         <p className={styles.sectionText}>
           I&apos;ve worked on numerous freelance projects ranging from simple landing pages to full-stack applications. My focus is always on clean code and intuitive interfaces.
         </p>
-      </motion.section>
+      </ParallaxSection>
 
-      <motion.section
-        className={styles.section}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.3 }}
-      >
+      <ParallaxSection className={styles.section} delay={0.3}>
         <h2 className={styles.sectionTitle}>Testimonials</h2>
         <p className={styles.sectionText}>
           &quot;Working with Jane was a pleasure. Her attention to detail and creative approach brought our project to life.&quot; – Happy Client
         </p>
-      </motion.section>
+      </ParallaxSection>
     </>
   );
 }
