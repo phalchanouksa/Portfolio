@@ -1,8 +1,17 @@
 
+
+
 html { scroll-behavior: smooth; }
 :root {
   --background: #fdfdfd;
   --foreground: #333;
+  --accent: #4f46e5;
+}
+
+[data-theme='dark'] {
+  --background: #0d1117;
+  --foreground: #e5e7eb;
+  --accent: #6366f1;
 }
 
 body {
@@ -11,6 +20,12 @@ body {
   color: var(--foreground);
   font-family: var(--font-body, sans-serif);
   line-height: 1.6;
+  cursor: none;
+}
+
+a,
+button {
+  cursor: none;
 }
 
 img {
@@ -19,10 +34,30 @@ img {
 }
 
 a {
-  color: #0050b3;
+  color: var(--accent);
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 9999px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  transition: transform 0.15s ease, width 0.15s ease, height 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.custom-cursor.hover {
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.8), 0 0 16px rgba(99, 102, 241, 0.6);
 }
