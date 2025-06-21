@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, TorusKnot, Environment } from '@react-three/drei';
 import { Suspense } from 'react';
+import Tilt from 'react-parallax-tilt';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -20,7 +21,7 @@ export default function Home() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
       >
-        <div className={styles.canvasWrap}>
+        <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} glareEnable glareMaxOpacity={0.2} className={styles.canvasWrap}>
           <Canvas style={{ height: 200, width: 200 }}>
             <Suspense fallback={null}>
               <ambientLight intensity={0.6} />
@@ -32,7 +33,7 @@ export default function Home() {
               <Environment preset="city" />
             </Suspense>
           </Canvas>
-        </div>
+        </Tilt>
         <h1 className={styles.title}>Jane Doe</h1>
         <p className={styles.description}>Welcome to my personal portfolio built with Next.js. Here you&#39;ll find my latest writings.</p>
         <div className={styles.links}>

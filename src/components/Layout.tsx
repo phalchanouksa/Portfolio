@@ -4,7 +4,6 @@ import { ReactNode, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Layout.module.css';
 import CommandMenu from './CommandMenu';
-import Button from './ui/button';
 import Cursor from './Cursor';
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -36,12 +35,8 @@ export default function Layout({ children }: { children: ReactNode }) {
             Jane
           </Link>
           <nav className={styles.nav}>
-            <Button variant="outline" size="sm">
-              <Link href="/">Home</Link>
-            </Button>
-            <Button variant="outline" size="sm">
-              <Link href="/blog">Blog</Link>
-            </Button>
+            <Link href="/">Home</Link>
+            <Link href="/blog">Blog</Link>
           </nav>
         </div>
       </motion.header>
