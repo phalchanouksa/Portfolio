@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ReactNode, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Layout.module.css';
@@ -32,7 +33,13 @@ export default function Layout({ children }: { children: ReactNode }) {
       >
         <div className={styles.navContainer}>
           <Link href="/" className={styles.logo}>
-            Jane
+            <Image
+              src="/developer.svg"
+              alt="Developer"
+              width={40}
+              height={40}
+              className={styles.logoImage}
+            />
           </Link>
           <nav className={styles.nav}>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>

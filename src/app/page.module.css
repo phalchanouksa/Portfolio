@@ -9,6 +9,7 @@
   padding: 0 1rem;
   position: relative;
   overflow: hidden;
+  will-change: transform;
 }
 
 .hero::before {
@@ -17,7 +18,7 @@
   inset: 0;
   background: linear-gradient(135deg, #e0ecff, #ffffff, #ffe4e1);
   background-size: 200% 200%;
-  animation: gradientShift 10s ease infinite;
+  animation: gradientShift 15s ease infinite;
   z-index: -2;
 }
 
@@ -132,7 +133,7 @@
   height: 200px;
   background: radial-gradient(circle, rgba(79, 70, 229, 0.4), transparent 70%);
   border-radius: 50%;
-  animation: float 20s linear infinite;
+  animation: float 18s ease-in-out infinite;
 }
 
 .bubbles span:nth-child(1) {
@@ -172,6 +173,7 @@
   text-align: center;
   padding: 4rem 1rem;
   gap: 1rem;
+  will-change: transform;
 }
 
 .sectionTitle {

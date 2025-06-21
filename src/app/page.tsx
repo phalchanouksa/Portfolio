@@ -2,7 +2,7 @@
 import SEO from '@/components/SEO';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Text3D, Environment } from '@react-three/drei';
+import { OrbitControls, Text3D } from '@react-three/drei';
 import { Suspense } from 'react';
 import Tilt from 'react-parallax-tilt';
 import styles from './page.module.css';
@@ -19,7 +19,7 @@ export default function Home() {
         className={styles.hero}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.4 }}
       >
         <div className={styles.bubbles} aria-hidden="true">
           <span></span>
@@ -27,7 +27,7 @@ export default function Home() {
           <span></span>
         </div>
         <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} glareEnable glareMaxOpacity={0.2} className={styles.canvasWrap}>
-          <Canvas style={{ height: 200, width: 200 }}>
+          <Canvas style={{ height: 200, width: 200 }} frameloop="demand" dpr={[1, 1.5]} camera={{ position: [0, 0, 4] }}>
             <Suspense fallback={null}>
               <ambientLight intensity={0.6} />
               <directionalLight position={[0, 0, 2]} />
@@ -36,7 +36,6 @@ export default function Home() {
                 Ouksa
                 <meshStandardMaterial color="#4f46e5" metalness={0.8} roughness={0.2} />
               </Text3D>
-              <Environment preset="city" />
             </Suspense>
           </Canvas>
         </Tilt>
@@ -52,7 +51,7 @@ export default function Home() {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.4 }}
       >
         <h2 className={styles.sectionTitle}>About Me</h2>
         <p className={styles.sectionText}>
@@ -66,7 +65,20 @@ export default function Home() {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.1 }}
+        transition={{ duration: 0.4, delay: 0.15 }}
+      >
+        <h2 className={styles.sectionTitle}>Skills</h2>
+        <p className={styles.sectionText}>
+          JavaScript, React, Three.js, and modern CSS techniques are some of the tools I use daily.
+        </p>
+      </motion.section>
+
+      <motion.section
+        className={styles.section}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.1 }}
       >
         <h2 className={styles.sectionTitle}>Projects</h2>
         <p className={styles.sectionText}>
@@ -80,7 +92,7 @@ export default function Home() {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        transition={{ duration: 0.4, delay: 0.2 }}
       >
         <h2 className={styles.sectionTitle}>Get in Touch</h2>
         <p className={styles.sectionText}>
