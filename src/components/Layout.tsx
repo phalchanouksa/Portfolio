@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { ReactNode, useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Layout.module.css';
 import CommandMenu from './CommandMenu';
@@ -10,6 +11,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   const [showNav, setShowNav] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const pathname = usePathname();
 
   useEffect(() => {
     let last = window.scrollY;
@@ -47,11 +49,35 @@ export default function Layout({ children }: { children: ReactNode }) {
           <Link href="/" className={`${styles.logo} ${styles.logoText}`}>Ouksa</Link>
           <div className={styles.menu}>
             <nav className={styles.nav}>
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Link href="/">Home</Link>
+              <motion.div
+                className={styles.navItem}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link href="/" className={pathname === '/' ? styles.active : ''}>
+                  Home
+                  {pathname === '/' && (
+                    <motion.span
+                      layoutId="navUnderline"
+                      className={styles.underline}
+                    />
+                  )}
+                </Link>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Link href="/blog">Blog</Link>
+              <motion.div
+                className={styles.navItem}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link href="/blog" className={pathname === '/blog' ? styles.active : ''}>
+                  Blog
+                  {pathname === '/blog' && (
+                    <motion.span
+                      layoutId="navUnderline"
+                      className={styles.underline}
+                    />
+                  )}
+                </Link>
               </motion.div>
             </nav>
             <button

@@ -93,7 +93,7 @@ export default function Home() {
       >
         <h2 className={styles.sectionTitle}>Experience</h2>
         <p className={styles.sectionText}>
-          I've worked on numerous freelance projects ranging from simple landing pages to full-stack applications. My focus is always on clean code and intuitive interfaces.
+          I&apos;ve worked on numerous freelance projects ranging from simple landing pages to full-stack applications. My focus is always on clean code and intuitive interfaces.
         </p>
       </motion.section>
 
@@ -106,7 +106,7 @@ export default function Home() {
       >
         <h2 className={styles.sectionTitle}>Testimonials</h2>
         <p className={styles.sectionText}>
-          "Working with Jane was a pleasure. Her attention to detail and creative approach brought our project to life." – Happy Client
+          &quot;Working with Jane was a pleasure. Her attention to detail and creative approach brought our project to life.&quot; – Happy Client
         </p>
       </motion.section>
     </>
