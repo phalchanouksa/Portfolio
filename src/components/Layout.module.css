@@ -29,15 +29,32 @@
 }
 
 .nav a {
+  position: relative;
   color: var(--foreground);
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #1d4ed8;
+  transition: width 0.3s ease, left 0.3s ease;
 }
 
 .nav a:hover {
-  background: rgba(0, 0, 0, 0.05);
+  color: #1d4ed8;
   transform: translateY(-2px);
+}
+
+.nav a:hover::after {
+  width: 100%;
+  left: 0;
 }
 
 .main {

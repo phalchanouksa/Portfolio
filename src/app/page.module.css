@@ -7,22 +7,54 @@
   gap: 1.5rem;
   text-align: center;
   padding: 0 1rem;
-  background: linear-gradient(135deg, #e0ecff, #ffffff);
+  background: linear-gradient(135deg, #e0ecff, #ffffff, #ffe4e1);
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .profile {
   border-radius: 9999px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile:hover {
-  transform: scale(1.05);
+  transform: scale(1.1) rotate(-2deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .title {
   font-size: 2.25rem;
   font-weight: 700;
+  background: linear-gradient(90deg, #0ea5e9, #3b82f6, #9333ea);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 6s linear infinite;
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @media (min-width: 768px) {
@@ -44,14 +76,16 @@
 }
 
 .links a {
+  color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  border: 1px solid #d1d5db;
-  background: #fff;
-  transition: background 0.2s ease, transform 0.2s ease;
+  border: none;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .links a:hover {
-  background: #f3f4f6;
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
