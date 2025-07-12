@@ -1,383 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chan Ouksa - Portfolio</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <div class="logo">&lt;Chan Ouksa/&gt;</div>
-        <nav class="menu">
-          <a href="#about">ABOUT</a>
-          <a href="#work">WORK</a>
-          <a href="#skills">SKILLS</a>
-          <a href="#contacts">CONTACTS</a>
-        </nav>
-        <div class="social-links">
-          <a href="https://www.instagram.com/chan.ouksa/" target="_blank"
-            ><i class="fa-brands fa-instagram"></i
-          ></a>
-          <a href="https://github.com/phalchanouksa" target="_blank"
-            ><i class="fa-brands fa-github"></i
-          ></a>
-          <a href="https://web.facebook.com/chan.ouksa.16/" target="_blank"
-            ><i class="fa-brands fa-facebook"></i
-          ></a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlitchCoder Portfolio</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/glitch.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <canvas id="navbar-matrix-bg"></canvas>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="glitch-text" data-text="GLITCH">Ouksa</span>
+                <span class="logo-subtitle">Portfolio</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active" data-page="home">HOME</a><span class="nav-terminal-prompt">$</span>
+                </li>
+                <li class="nav-item">
+                    <a href="#blog" class="nav-link" data-page="blog">BLOG</a><span class="nav-terminal-prompt">$</span>
+                </li>
+            </ul>
+            <!-- Hamburger removed -->
         </div>
-      </aside>
+        <div class="crt-overlay"></div>
+    </nav>
 
-      <!-- Main Content -->
-      <main class="main">
-        <section id="about" class="section">
-          <div class="about-container">
-            <div class="about-content">
-              <h1>About Me</h1>
-              <div class="role">Front-end Developer</div>
-              <p class="intro">
-                Hello, I'm <span class="highlight">Ouksa</span>
-              </p>
-              <p class="description">
-                My ultimate goal is to grow and learn something new every day,
-                consistently enhancing both my knowledge and skills. I strive to
-                improve myself by tackling challenges that push my limits and
-                broaden my understanding.
-                <br /><br />
-                Third year Computer Science student in Angkor University. Siem
-                Reap, Cambodia.
-              </p>
+    <!-- Main Content Container -->
+    <main class="main-container">
+        <!-- Matrix Rain Background -->
+        <div class="matrix-background">
+            <canvas id="matrix-canvas"></canvas>
+            <div class="matrix-overlay"></div>
+        </div>
+
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="glitch-text" data-text="Phal Chanouksa">Phal Chanouksa</span>
+                    </h1>
+                    <p class="hero-subtitle">I'm a <span class="typing-text"></span></p>
+                    <div class="hero-description">
+                        <p>Full-stack developer who believes life is a bit like debugging, sometimes messy, often surprising, but always worth the effort.</p>
+                        
+                    </div>
+                    
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-terminal">
+                        <div class="terminal-header">
+                            user@portfolio:~$
+                        </div>
+<pre class="terminal-code">
+  <span class="terminal-comment">// Welcome to my portfolio 👋</span>
+  <span class="terminal-cmd">const coder = "Phal Chanouksa";</span>
+  <span class="terminal-cmd">function createPortfolio(portfolio) {</span>
+  <span class="terminal-cmd">  console.log("Building something awesome...");</span>
+  <span class="terminal-cmd">  return portfolio;</span>
+  <span class="terminal-cmd">}</span>
+  <span class="terminal-cmd">createPortfolio(coder);</span>
+</pre>
+                        
+                    </div>
+                    <div class="glitch-overlay"></div>
+                </div>
             </div>
-            <div class="about-decorative">
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <!-- Add some particles -->
-              <div class="particle" style="top: 20%; left: 30%"></div>
-              <div class="particle" style="top: 60%; left: 60%"></div>
-              <div class="particle" style="top: 80%; left: 20%"></div>
+
+            <div id="about" class="about-section">
+                <h2 class="section-title">
+                    <span class="glitch-text" data-text="ABOUT_ME">ABOUT_ME</span>
+                </h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <div class="about-terminal-container">
+                            <div id="about-terminal"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <div class="projects-section">
+                <h2 class="section-title">
+                    <span class="glitch-text" data-text="PROJECTS">PROJECTS</span>
+                </h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('public/01_project_myteacher.jpg');">
+                            <div class="project-overlay"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>MyTeacher</h3>
+                            <p>Comprehensive class management solution equipped with essential features to support teachers in effectively managing and engaging their classrooms.</p>
+                            <div class="project-tech">
+                                <span>Django</span>
+                                <span>SQLite</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('public/02_project_CRM.png');">
+                            <div class="project-overlay"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>CRM</h3>
+                            <p>A Customer Relationship Management (CRM) system is a software solution that helps businesses manage and analyze customer interactions, featuring built-in Telegram chat, task management, and more.</p>
+                            <div class="project-tech">
+                                <span>Refine</span>
+                                <span>PostgresQL</span>
+                                <span>Strapi</span>
+                                <span>Python(Flask)</span>
+                                <span>Redis</span>
+                                <span>Docker</span>
+                                <span>Redis</span>
+                                <span>Docusaurus</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('public/03_project_Mood_Predict.png');">
+                            <div class="project-overlay"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Mood-Based Predictor</h3>
+                            <p>Mood-Based Predictor: An intelligent tool that analyzes emotional states by sentences in Khmer language</p>
+                            <div class="project-tech">
+                                <span>Python(Flask)</span>
+                                <span>HTML, CSS, Javascript</span>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section id="work" class="section">
-          <div class="section-content">
-            <h1>My Projects</h1>
-            <div class="projects-grid">
-              <!-- Project 1 -->
-              <div class="project-card">
-                <div class="project-content">
-                  <div class="project-image">
-                    <img
-                      src="https://i.ibb.co/Qcf3QJ6/portfolio3.png"
-                      alt="Portfolio Website"
-                    />
-                    <div class="project-overlay"></div>
-                  </div>
-                  <h3>Google clone</h3>
-                  <p>My first ever front-end project as a complete beginner</p>
-                  <div class="project-tech">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                  </div>
-                  <!-- <div class="project-links">
-                    <a href="#" class="project-link">
-                      <i class="fa-brands fa-github"></i>
-                      Code
-                    </a>
-                    <a href="#" class="project-link">
-                      <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                      Live
-                    </a>
-                  </div> -->
-                </div>
-              </div>
-
-              <!-- Project 2 -->
-              <div class="project-card">
-                <div class="project-content">
-                  <div class="project-image">
-                    <img
-                      src="https://i.ibb.co/N9GSRKp/porfolio2.png"
-                      alt="google clone"
-                    />
-                    <div class="project-overlay"></div>
-                  </div>
-                  <h3>Responsive Navbar</h3>
-                  <p>Another mini project created by me</p>
-                  <div class="project-tech">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JS</span>
-                  </div>
-                  <!-- <div class="project-links">
-                    <a href="#" class="project-link">
-                      <i class="fa-brands fa-github"></i>
-                      Code
-                    </a>
-                    <a href="#" class="project-link">
-                      <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                      Live
-                    </a>
-                  </div> -->
-                </div>
-              </div>
-
-              <!-- Project 3 -->
-              <div class="project-card">
-                <div class="project-content">
-                  <div class="project-image">
-                    <img
-                      src="https://i.ibb.co/jLpzKXc/portfolio1.png"
-                      alt="Dashboard"
-                    />
-                    <div class="project-overlay"></div>
-                  </div>
-                  <h3>Youtube Downloader</h3>
-                  <p>A basic working Youtube Downloader desktop app</p>
-                  <div class="project-tech">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JS</span>
-                    <span>Electron</span>
-                    <span>Node.js</span>
-                    <span>Python</span>
-                  </div>
-                  <!-- <div class="project-links">
-                    <a href="#" class="project-link">
-                      <i class="fa-brands fa-github"></i>
-                      Code
-                    </a>
-                    <a href="#" class="project-link">
-                      <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                      Live
-                    </a>
-                  </div> -->
-                </div>
-              </div>
-              <!-- Project 4 -->
-              <div class="project-card">
-                <div class="project-content">
-                  <div class="project-image">
-                    <img
-                      src="https://i.ibb.co/B4FfrJm/portfolio4.png"
-                      alt="AI Chatbot"
-                    />
-                    <div class="project-overlay"></div>
-                  </div>
-                  <h3>AI Chatbot</h3>
-                  <p>ChatBot with Gemini API.</p>
-                  <div class="project-tech">
-                    <span>React</span>
-                  </div>
-                  <div class="project-links">
-                    <!-- <a href="#" class="project-link">
-                      <i class="fa-brands fa-github"></i>
-                      Code
-                    </a> -->
-                    <a
-                      href="https://gemini-api-ui-b8vq.vercel.app/"
-                      class="project-link"
-                      target="_blank"
-                    >
-                      <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                      Live
-                    </a>
-                  </div>
-                </div>
-              </div>
+        <!-- Blog Page -->
+        <section id="blog" class="page">
+            <div class="blog-header">
+                <h1 class="blog-title">
+                    <span class="glitch-text" data-text="BLOG">BLOG</span>
+                </h1>
+                <p class="blog-subtitle">Thoughts, tutorials, and glitchy experiments</p>
             </div>
-          </div>
-        </section>
-
-        <section id="skills" class="section">
-          <div class="section-content">
-            <h1>Skills & Expertise</h1>
-            <div class="skills-container">
-              <!-- Main Skills -->
-              <div class="skills-group">
-                <h3>Development</h3>
-                <div class="skills-grid">
-                  <div class="skill-card" data-percentage="80">
-                    <div class="skill-icon">
-                      <i class="fab fa-html5"></i>
-                    </div>
-                    <div class="skill-info">
-                      <span class="skill-name">HTML</span>
-                      <div class="skill-bar">
-                        <div class="skill-progress"></div>
-                      </div>
-                      <span class="skill-percentage">80%</span>
-                    </div>
-                  </div>
-
-                  <div class="skill-card" data-percentage="80">
-                    <div class="skill-icon">
-                      <i class="fab fa-css3-alt"></i>
-                    </div>
-                    <div class="skill-info">
-                      <span class="skill-name">CSS</span>
-                      <div class="skill-bar">
-                        <div class="skill-progress"></div>
-                      </div>
-                      <span class="skill-percentage">80%</span>
-                    </div>
-                  </div>
-
-                  <div class="skill-card" data-percentage="60">
-                    <div class="skill-icon">
-                      <i class="fab fa-js"></i>
-                    </div>
-                    <div class="skill-info">
-                      <span class="skill-name">JavaScript</span>
-                      <div class="skill-bar">
-                        <div class="skill-progress"></div>
-                      </div>
-                      <span class="skill-percentage">60%</span>
-                    </div>
-                  </div>
-
-                  <div class="skill-card" data-percentage="40">
-                    <div class="skill-icon">
-                      <i class="fab fa-react"></i>
-                    </div>
-                    <div class="skill-info">
-                      <span class="skill-name">React.js</span>
-                      <div class="skill-bar">
-                        <div class="skill-progress"></div>
-                      </div>
-                      <span class="skill-percentage">40%</span>
-                    </div>
-                  </div>
-
-                  <div class="skill-card" data-percentage="40">
-                    <div class="skill-icon">
-                      <i class="fab fa-php"></i>
-                    </div>
-                    <div class="skill-info">
-                      <span class="skill-name">PHP</span>
-                      <div class="skill-bar">
-                        <div class="skill-progress"></div>
-                      </div>
-                      <span class="skill-percentage">40%</span>
-                    </div>
-                  </div>
-                  <div class="skill-card" data-percentage="60">
-                    <div class="skill-icon">
-                      <i class="fa-solid fa-r"></i>
-                    </div>
-                    <div class="skill-info">
-                      <span class="skill-name">Refine JS</span>
-                      <div class="skill-bar">
-                        <div class="skill-progress"></div>
-                      </div>
-                      <span class="skill-percentage">60%</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            
+            <div class="blog-filters">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="tutorial">TUTORIALS</button>
+                <button class="filter-btn" data-filter="experiment">EXPERIMENTS</button>
+                <button class="filter-btn" data-filter="thoughts">THOUGHTS</button>
             </div>
-          </div>
-        </section>
 
-        <section id="contacts" class="section">
-          <div class="contact-wrapper">
-            <h1 class="contact-title">Get in Touch</h1>
-            <div class="contact-container">
-              <!-- Contact Info Side -->
-              <div class="contact-info">
-                <div class="info-card">
-                  <h2>Let's Connect</h2>
-                  <p class="contact-description">
-                    Have a project in mind? Let's discuss how we can work
-                    together.
-                  </p>
-
-                  <div class="contact-methods">
-                    <div class="contact-item">
-                      <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                      </div>
-                      <div class="contact-details">
-                        <h3>Email</h3>
-                        <a href="mailto:phalchanouksa10@email.com"
-                          >phalchanouksa10@email.com</a
-                        >
-                      </div>
+            <div class="blog-grid">
+                <article class="blog-card" data-category="tutorial">
+                    <div class="blog-image">
+                        <div class="blog-overlay"></div>
                     </div>
-
-                    <div class="contact-item">
-                      <div class="contact-icon">
-                        <i class="fab fa-github"></i>
-                      </div>
-                      <div class="contact-details">
-                        <h3>GitHub</h3>
-                        <a
-                          href="https://github.com/phalchanouksa"
-                          target="_blank"
-                          >github.com/chanouksa</a
-                        >
-                      </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">2024-01-15</span>
+                            <span class="blog-category">TUTORIAL</span>
+                        </div>
+                        <h3 class="blog-title">Creating Glitch Effects with CSS</h3>
+                        <p class="blog-excerpt">Learn how to create authentic glitch effects using pure CSS and JavaScript. From text glitches to image distortions...</p>
+                        <a href="#" class="blog-link">READ MORE →</a>
                     </div>
+                </article>
 
-                    <div class="contact-item">
-                      <div class="contact-icon">
-                        <i class="fab fa-facebook"></i>
-                      </div>
-                      <div class="contact-details">
-                        <h3>Facebook</h3>
-                        <a
-                          href="https://web.facebook.com/chan.ouksa.16/"
-                          target="_blank"
-                          >Chan Ouksa</a
-                        >
-                      </div>
+                <article class="blog-card" data-category="experiment">
+                    <div class="blog-image">
+                        <div class="blog-overlay"></div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">2024-01-10</span>
+                            <span class="blog-category">EXPERIMENT</span>
+                        </div>
+                        <h3 class="blog-title">WebGL Particle Systems</h3>
+                        <p class="blog-excerpt">Exploring the power of WebGL for creating complex particle systems and visual effects in the browser...</p>
+                        <a href="#" class="blog-link">READ MORE →</a>
+                    </div>
+                </article>
 
-              <!-- Contact Form Side -->
-              <div class="contact-form">
-                <form>
-                  <div class="form-group">
-                    <input type="text" id="name" required />
-                    <label for="name">Name</label>
-                    <span class="focus-border"></span>
-                  </div>
+                <article class="blog-card" data-category="thoughts">
+                    <div class="blog-image">
+                        <div class="blog-overlay"></div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">2024-01-05</span>
+                            <span class="blog-category">THOUGHTS</span>
+                        </div>
+                        <h3 class="blog-title">The Art of Broken Code</h3>
+                        <p class="blog-excerpt">Why sometimes the most beautiful code is the one that doesn't work perfectly. Embracing imperfection in programming...</p>
+                        <a href="#" class="blog-link">READ MORE →</a>
+                    </div>
+                </article>
 
-                  <div class="form-group">
-                    <input type="email" id="email" required />
-                    <label for="email">Email</label>
-                    <span class="focus-border"></span>
-                  </div>
-
-                  <div class="form-group">
-                    <textarea id="message" required></textarea>
-                    <label for="message">Message</label>
-                    <span class="focus-border"></span>
-                  </div>
-
-                  <button class="submit-btn">
-                    <span>Send Message</span>
-                    <i class="fas fa-paper-plane"></i>
-                  </button>
-                </form>
-              </div>
+                <article class="blog-card" data-category="tutorial">
+                    <div class="blog-image">
+                        <div class="blog-overlay"></div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">2023-12-28</span>
+                            <span class="blog-category">TUTORIAL</span>
+                        </div>
+                        <h3 class="blog-title">Matrix-Style Terminal Effects</h3>
+                        <p class="blog-excerpt">Building a retro terminal interface with falling green characters and authentic matrix-style animations...</p>
+                        <a href="#" class="blog-link">READ MORE →</a>
+                    </div>
+                </article>
             </div>
-          </div>
         </section>
-      </main>
-    </div>
+    </main>
 
-    <div class="scroll-progress"></div>
-    <script src="./index.js"></script>
-  </body>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Ouksa</h3>
+                <p>I have a dream.</p>
+            </div>
+            <div class="footer-section">
+                <h4>CONNECT</h4>
+                <div class="social-links">
+                    <a target="_blank" href="https://github.com/phalchanouksa" class="social-link">GitHub</a>
+                    <a target="_blank" href="https://www.facebook.com/chan.ouksa.16" class="social-link">Facebook</a>
+                    <a target="_blank" href="https://www.instagram.com/chan.ouksa/" class="social-link">Instagram</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>CONTACT</h4>
+                <p>phalchanouksa@gmail.com</p>
+            </div>
+        </div>
+        
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/glitch.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</body>
 </html>

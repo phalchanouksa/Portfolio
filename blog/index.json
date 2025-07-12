@@ -1,0 +1,10 @@
+[
+  {
+    "filename": "my-first-post.md",
+    "title": "My First Blog Post",
+    "date": "2024-07-11",
+    "category": "personal",
+    "tags": ["personal", "introduction"],
+    "excerpt": "Hello visitor. This is my first blog post."
+  }
+] 

@@ -1,0 +1,382 @@
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Large Desktop */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .hero-title {
+        font-size: 5rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Desktop */
+@media (max-width: 1200px) {
+    .hero-section {
+        gap: var(--spacing-md);
+    }
+    
+    .about-content {
+        gap: var(--spacing-md);
+    }
+    
+
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    /* Typography */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+    
+    /* Hero Section */
+    .hero-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--spacing-md);
+        min-height: 60vh;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .hero-visual {
+        height: 300px;
+    }
+    
+    /* About Section */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+
+    
+    /* Projects */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .project-card {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    /* Blog */
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    /* .blog-filters {
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+    }
+    
+    .filter-btn {
+        font-size: 0.9rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    } */
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--spacing-md);
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    /* Spacing */
+    .main-container {
+        padding-top: 70px;
+    }
+    
+    .nav-container {
+        height: 70px;
+    }
+    
+    .hero-section {
+        padding: var(--spacing-md) 0;
+        min-height: 50vh;
+    }
+    
+    .about-section,
+    .projects-section {
+        padding: var(--spacing-md) 0;
+    }
+    
+    /* Typography */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-description p {
+        font-size: 1rem;
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.9rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    /* Cards */
+    .project-content,
+    .blog-content {
+        padding: var(--spacing-sm);
+    }
+    
+    .project-tech span {
+        font-size: 0.8rem;
+        padding: 4px 6px;
+    }
+    
+    /* Blog */
+    .blog-meta {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .blog-date,
+    .blog-category {
+        font-size: 0.8rem;
+    }
+    
+    /* Footer */
+    .footer {
+        padding: var(--spacing-md) 0 var(--spacing-sm);
+    }
+    
+    .footer-section h3,
+    .footer-section h4 {
+        font-size: 1rem;
+    }
+    
+    .footer-section p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+    
+    .project-content h3,
+    .blog-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        min-height: 40vh;
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .hero-description {
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .hero-description p {
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .hero-buttons {
+        gap: var(--spacing-xs);
+    }
+    
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .glitch-text::before,
+    .glitch-text::after {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .glitch-text {
+        animation: none;
+    }
+    
+    .glitch-text::before,
+    .glitch-text::after {
+        display: none;
+    }
+    
+    .code-matrix {
+        animation: none;
+    }
+    
+    .typing-text {
+        animation: none;
+        border-right: none;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-dark: #000000;
+        --background-light: #0a0a0a;
+        --text-primary: #ffffff;
+        --text-secondary: #e0e0e0;
+        --text-muted: #a0a0a0;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .hero-visual,
+    .glitch-overlay,
+    .code-matrix,
+    .footer {
+        display: none;
+    }
+    
+    .main-container {
+        padding-top: 0;
+    }
+    
+    .page {
+        display: block !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    .hero-section {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+    
+    .projects-grid,
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    * {
+        color: #000 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    .btn {
+        border: 1px solid #000 !important;
+        background: #fff !important;
+        color: #000 !important;
+    }
+}
+
+/* Focus Styles for Accessibility */
+@media (prefers-reduced-motion: no-preference) {
+    .nav-link:focus,
+    .btn:focus,
+    .filter-btn:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .hover-lift:hover,
+    .hover-glow:hover,
+    .hover-scale:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .project-card:hover,
+    .blog-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .nav-link:hover {
+        border-color: transparent;
+        box-shadow: none;
+    }
+    
+    .nav-link:hover::before {
+        opacity: 0;
+    }
+} 
