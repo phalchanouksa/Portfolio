@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add touch event for better mobile responsiveness
         hamburgerMenu.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-        }, { passive: false });
+            // The click event is sufficient, no need to preventDefault here
+        }, { passive: true });
     }
 
     // Close menu when a link is clicked
