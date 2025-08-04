@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Phal Chanouksa</title>
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="social-links">
+            <button id="hamburger-menu" class="icon-button">
+                <span class="hamburger-line"></span>
+            </button>
+            <a href="index.html" class="icon-button">←</a>
+            <a href="#" class="icon-button">in</a>
+            <a href="#" class="icon-button">tw</a>
+            <a href="#" class="icon-button">gh</a>
+        </div>
+    </header>
+
+    <div id="overlay-nav" class="overlay-menu">
+        <div class="overlay-content">
+            <nav>
+                <a href="index.html#about">About</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="blog.html">Blog</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <div class="content-container">
+            <section id="blog-header">
+                <div class="y2k-window">
+                    <div class="window-content">
+                        <h1>Blog Posts</h1>
+                        <p>Thoughts, tutorials, and experiences from my coding journey</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="separator"></div>
+
+            <section id="all-blog-posts">
+                <div id="all-posts-container" class="blog-posts-grid">
+                    <!-- All blog posts will be loaded dynamically -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Blog Modal -->
+    <div id="blog-modal" class="blog-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title">Blog Post</h2>
+                <button class="modal-close" id="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta" id="modal-meta"></div>
+                <div id="modal-content" class="post-full-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="js/blog.js"></script>
+</body>
+</html>

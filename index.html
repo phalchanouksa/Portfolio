@@ -3,254 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlitchCoder Portfolio</title>
+    <title>Phal Chanouksa - Portfolio</title>
+
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/glitch.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <canvas id="navbar-matrix-bg"></canvas>
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="glitch-text" data-text="GLITCH">Ouksa</span>
-                <span class="logo-subtitle">Portfolio</span>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link active" data-page="home">HOME</a><span class="nav-terminal-prompt">$</span>
-                </li>
-                <li class="nav-item">
-                    <a href="#blog" class="nav-link" data-page="blog">BLOG</a><span class="nav-terminal-prompt">$</span>
-                </li>
-            </ul>
-            <!-- Hamburger removed -->
+    <header>
+        <div class="social-links">
+            <button id="hamburger-menu" class="icon-button">
+                <span class="hamburger-line"></span>
+            </button>
+            <a href="#" class="icon-button">in</a>
+            <a href="#" class="icon-button">tw</a>
+            <a href="#" class="icon-button">gh</a>
         </div>
-        <div class="crt-overlay"></div>
-    </nav>
+    </header>
 
-    <!-- Main Content Container -->
-    <main class="main-container">
-        <!-- Matrix Rain Background -->
-        <div class="matrix-background">
-            <canvas id="matrix-canvas"></canvas>
-            <div class="matrix-overlay"></div>
+    <div id="overlay-nav" class="overlay-menu">
+        <div class="overlay-content">
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
+    </div>
 
-        <!-- Home Page -->
-        <section id="home" class="page active">
-            <div class="hero-section">
-                <div class="hero-content">
-                    <h1 class="hero-title">
-                        <span class="glitch-text" data-text="Phal Chanouksa">Phal Chanouksa</span>
-                    </h1>
-                    <p class="hero-subtitle">I'm a <span class="typing-text"></span></p>
-                    <div class="hero-description">
-                        <p>Full-stack developer who believes life is a bit like debugging, sometimes messy, often surprising, but always worth the effort.</p>
-                        
-                    </div>
-                    
-                </div>
-                <div class="hero-visual">
-                    <div class="floating-terminal">
-                        <div class="terminal-header">
-                            user@portfolio:~$
-                        </div>
-<pre class="terminal-code">
-  <span class="terminal-comment">// Welcome to my portfolio 👋</span>
-  <span class="terminal-cmd">const coder = "Phal Chanouksa";</span>
-  <span class="terminal-cmd">function createPortfolio(portfolio) {</span>
-  <span class="terminal-cmd">  console.log("Building something awesome...");</span>
-  <span class="terminal-cmd">  return portfolio;</span>
-  <span class="terminal-cmd">}</span>
-  <span class="terminal-cmd">createPortfolio(coder);</span>
-</pre>
-                        
-                    </div>
-                    <div class="glitch-overlay"></div>
-                </div>
-            </div>
-
-            <div id="about" class="about-section">
-                <h2 class="section-title">
-                    <span class="glitch-text" data-text="ABOUT_ME">ABOUT_ME</span>
-                </h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <div class="about-terminal-container">
-                            <div id="about-terminal"></div>
-                        </div>
+    <main>
+        <div class="content-container">
+            <section id="about">
+                <div class="y2k-window">
+                    <div class="window-content">
+                        <h2>Welcome!</h2>
+                        <p>My name is Phal Chanouksa, and I am a Computer Science student at Angkor University.</p>
+                        <h3>My Hobbies</h3>
+                        <ul class="skills-list">
+                            <li>Movie</li>
+                            <li>Music & Singing</li>
+                            <li>Video Games</li>
+                        </ul>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="projects-section">
-                <h2 class="section-title">
-                    <span class="glitch-text" data-text="PROJECTS">PROJECTS</span>
-                </h2>
-                <div class="projects-grid">
+            <div class="separator"></div>
+
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="project-grid">
+                    <!-- Project 1 -->
                     <div class="project-card">
-                        <div class="project-image" style="background-image: url('public/01_project_myteacher.jpg');">
-                            <div class="project-overlay"></div>
-                        </div>
-                        <div class="project-content">
+                        <img src="public/01_project_myteacher.jpg" alt="My Teacher Project">
+                        <div class="card-content">
                             <h3>MyTeacher</h3>
-                            <p>Comprehensive class management solution equipped with essential features to support teachers in effectively managing and engaging their classrooms.</p>
-                            <div class="project-tech">
-                                <span>Django</span>
-                                <span>SQLite</span>
-                            </div>
+                            <p>MyTeacher is a small web app for teachers to manage their classes.</p>
+                            <ul class="tech-stack">
+                                <li>Django</li>
+                            </ul>
                         </div>
                     </div>
+                    <!-- Project 2 -->
                     <div class="project-card">
-                        <div class="project-image" style="background-image: url('public/02_project_CRM.png');">
-                            <div class="project-overlay"></div>
-                        </div>
-                        <div class="project-content">
+                        <img src="public/02_project_CRM.png" alt="CRM Project">
+                        <div class="card-content">
                             <h3>CRM</h3>
                             <p>A Customer Relationship Management (CRM) system is a software solution that helps businesses manage and analyze customer interactions, featuring built-in Telegram chat, task management, and more.</p>
-                            <div class="project-tech">
-                                <span>Refine</span>
-                                <span>PostgresQL</span>
-                                <span>Strapi</span>
-                                <span>Python(Flask)</span>
-                                <span>Redis</span>
-                                <span>Docker</span>
-                                <span>Redis</span>
-                                <span>Docusaurus</span>
-                            </div>
+                            <ul class="tech-stack">
+                                <li>Strapi CMS</li>
+                                <li>Refine JS</li>
+                                <li>PostgreSQL</li>
+                                <li>Docker</li>
+                                <li>Python</li>
+                                <li>WebSocket</li>
+                                <li>Redis</li>
+                                <li>Docusaurus</li>
+                            </ul>
                         </div>
                     </div>
+                    <!-- Project 3 -->
                     <div class="project-card">
-                        <div class="project-image" style="background-image: url('public/03_project_Mood_Predict.png');">
-                            <div class="project-overlay"></div>
-                        </div>
-                        <div class="project-content">
+                        <img src="public/03_project_Mood_Predict.png" alt="Mood Predict Project">
+                        <div class="card-content">
                             <h3>Mood-Based Predictor</h3>
                             <p>Mood-Based Predictor: An intelligent tool that analyzes emotional states by sentences in Khmer language</p>
-                            <div class="project-tech">
-                                <span>Python(Flask)</span>
-                                <span>HTML, CSS, Javascript</span>
-                                
-                            </div>
+                            <ul class="tech-stack">
+                                <li>Python</li>
+                                <li>HTML, CSS, Javascript</li>
+                                <li>My custom trained AI Model</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Blog Page -->
-        <section id="blog" class="page">
-            <div class="blog-header">
-                <h1 class="blog-title">
-                    <span class="glitch-text" data-text="BLOG">BLOG</span>
-                </h1>
-                <p class="blog-subtitle">Thoughts, tutorials, and glitchy experiments</p>
-            </div>
-            
-            <div class="blog-filters">
-                <button class="filter-btn active" data-filter="all">ALL</button>
-                <button class="filter-btn" data-filter="tutorial">TUTORIALS</button>
-                <button class="filter-btn" data-filter="experiment">EXPERIMENTS</button>
-                <button class="filter-btn" data-filter="thoughts">THOUGHTS</button>
-            </div>
+            <div class="separator"></div>
 
-            <div class="blog-grid">
-                <article class="blog-card" data-category="tutorial">
-                    <div class="blog-image">
-                        <div class="blog-overlay"></div>
+            <section id="blog">
+                <h2>Latest Blog Posts</h2>
+                <div class="blog-preview">
+                    <div id="blog-posts-container" class="blog-posts">
+                        <!-- Blog posts will be loaded dynamically -->
                     </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">2024-01-15</span>
-                            <span class="blog-category">TUTORIAL</span>
-                        </div>
-                        <h3 class="blog-title">Creating Glitch Effects with CSS</h3>
-                        <p class="blog-excerpt">Learn how to create authentic glitch effects using pure CSS and JavaScript. From text glitches to image distortions...</p>
-                        <a href="#" class="blog-link">READ MORE →</a>
+                    <div class="blog-actions">
+                        <a href="blog.html" class="view-all-btn">View All Posts</a>
                     </div>
-                </article>
+                </div>
+            </section>
 
-                <article class="blog-card" data-category="experiment">
-                    <div class="blog-image">
-                        <div class="blog-overlay"></div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">2024-01-10</span>
-                            <span class="blog-category">EXPERIMENT</span>
-                        </div>
-                        <h3 class="blog-title">WebGL Particle Systems</h3>
-                        <p class="blog-excerpt">Exploring the power of WebGL for creating complex particle systems and visual effects in the browser...</p>
-                        <a href="#" class="blog-link">READ MORE →</a>
-                    </div>
-                </article>
+            <div class="separator"></div>
 
-                <article class="blog-card" data-category="thoughts">
-                    <div class="blog-image">
-                        <div class="blog-overlay"></div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">2024-01-05</span>
-                            <span class="blog-category">THOUGHTS</span>
-                        </div>
-                        <h3 class="blog-title">The Art of Broken Code</h3>
-                        <p class="blog-excerpt">Why sometimes the most beautiful code is the one that doesn't work perfectly. Embracing imperfection in programming...</p>
-                        <a href="#" class="blog-link">READ MORE →</a>
-                    </div>
-                </article>
-
-                <article class="blog-card" data-category="tutorial">
-                    <div class="blog-image">
-                        <div class="blog-overlay"></div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">2023-12-28</span>
-                            <span class="blog-category">TUTORIAL</span>
-                        </div>
-                        <h3 class="blog-title">Matrix-Style Terminal Effects</h3>
-                        <p class="blog-excerpt">Building a retro terminal interface with falling green characters and authentic matrix-style animations...</p>
-                        <a href="#" class="blog-link">READ MORE →</a>
-                    </div>
-                </article>
-            </div>
-        </section>
+            <section id="contact">
+                <h2>Contact</h2>
+                <p>Feel free to reach out. You can find me on the following platforms:</p>
+                <div class="contact-links">
+                    <a href="mailto:phalchanouksa@gmail.com" class="contact-link-btn">Email</a>
+                    <a href="https://www.instagram.com/chan.ouksa/" target="_blank" class="contact-link-btn">Instagram</a>
+                    <a href="https://www.facebook.com/chan.ouksa.16/" target="_blank" class="contact-link-btn">Facebook</a>
+                    <a href="https://t.me/ChanOuksa" target="_blank" class="contact-link-btn">Telegram</a>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Ouksa</h3>
-                <p>I have a dream.</p>
+    <!-- Blog Modal -->
+    <div id="blog-modal" class="blog-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title">Blog Post</h2>
+                <button class="modal-close" id="modal-close">×</button>
             </div>
-            <div class="footer-section">
-                <h4>CONNECT</h4>
-                <div class="social-links">
-                    <a target="_blank" href="https://github.com/phalchanouksa" class="social-link">GitHub</a>
-                    <a target="_blank" href="https://www.facebook.com/chan.ouksa.16" class="social-link">Facebook</a>
-                    <a target="_blank" href="https://www.instagram.com/chan.ouksa/" class="social-link">Instagram</a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>CONTACT</h4>
-                <p>phalchanouksa@gmail.com</p>
+            <div class="modal-body">
+                <div class="modal-meta" id="modal-meta"></div>
+                <div id="modal-content" class="post-full-content"></div>
             </div>
         </div>
-        
-    </footer>
+    </div>
 
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/glitch.js"></script>
-    <script src="js/blog.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
