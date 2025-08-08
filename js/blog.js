@@ -3,12 +3,20 @@ class BlogManager {
     constructor() {
         this.posts = [
             {
+                id: '2-ai-personal-reflection',
+                title: 'Why I Like AI',
+                date: '2025-08-08',
+                excerpt: 'AI helps me make things faster. It is like a simple tool I can open anytime. I write a small idea, and it helps me turn it into something real.',
+                file: '2-ai-personal-reflection.md'
+            },
+            {
                 id: '1firstblogpost',
                 title: 'Testing my first blog post',
                 date: '2025-08-04',
                 excerpt: 'This is my first blog post',
                 file: '1firstblogpost.md'
             },
+            
         ];
         this.modal = null;
         this.init();
@@ -54,12 +62,17 @@ class BlogManager {
     async loadLatestPosts() {
         const container = document.getElementById('blog-posts-container');
         if (!container) return;
+        // Ensure card grid layout on home section
+        container.classList.add('blog-posts-grid');
 
-        // Show only the 2 most recent posts on home page
-        const latestPosts = this.posts.slice(0, 2);
+        // Sort by date (newest first) and show only the latest 2 on home page
+        const latestPosts = [...this.posts]
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .slice(0, 2);
         
         for (const post of latestPosts) {
-            const postElement = this.createPostPreview(post);
+            // Use full card layout for consistency
+            const postElement = this.createPostCard(post);
             container.appendChild(postElement);
         }
     }
@@ -68,7 +81,9 @@ class BlogManager {
         const container = document.getElementById('all-posts-container');
         if (!container) return;
 
-        for (const post of this.posts) {
+        // Sort by date (newest first) for blog listing page
+        const sorted = [...this.posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+        for (const post of sorted) {
             const postElement = this.createPostCard(post);
             container.appendChild(postElement);
         }

@@ -89,8 +89,9 @@ body.nav-active .social-links {
 }
 
 .content-container {
-    max-width: 650px;
+    max-width: 1200px;
     width: 100%;
+    padding: 0 24px;
 }
 
 h1, h2 {
@@ -463,6 +464,83 @@ body.nav-active #hamburger-menu {
 .contact-link-btn:active {
     transform: translate(3px, 3px);
     box-shadow: 2px 2px 0px #00000040;
+}
+
+/* Floating GitHub Button */
+.float-github {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    background: var(--header-bg);
+    color: var(--header-text);
+    border: 3px solid var(--text-color);
+    box-shadow: 6px 6px 0px #00000040;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 1100;
+    transform: translateZ(0);
+    animation: gh-bob 3.2s var(--ease-spring, cubic-bezier(0.22,1,0.36,1)) infinite;
+}
+
+.float-github:hover {
+    transform: translateY(-4px);
+    box-shadow: 8px 8px 0px #00000055;
+}
+
+.float-github:active {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0px #00000040;
+}
+
+.float-github .gh-icon {
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,0.15));
+    animation: gh-wiggle 2.8s ease-in-out infinite;
+}
+
+/* Pixel sparkles */
+.float-github .sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-color-light);
+    border: 2px solid var(--text-color);
+    box-shadow: 2px 2px 0px #00000030;
+    transform: rotate(45deg);
+    opacity: 0.9;
+}
+.float-github .s1 { top: -8px; left: -8px; animation: sparkle 1.8s ease-in-out infinite; }
+.float-github .s2 { bottom: -10px; right: -10px; animation: sparkle 2.2s ease-in-out infinite 0.3s; }
+.float-github .s3 { top: -12px; right: -6px; animation: sparkle 2.6s ease-in-out infinite 0.6s; }
+
+@keyframes gh-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes gh-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-3deg); }
+  40% { transform: rotate(2deg); }
+  60% { transform: rotate(-2deg); }
+  80% { transform: rotate(1deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; transform: rotate(45deg) scale(0.9); }
+  50% { opacity: 1; transform: rotate(45deg) scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-github { animation: none; }
+  .float-github .gh-icon { animation: none; }
+  .float-github .sparkle { animation: none; }
 }
 
 /* ========================================
