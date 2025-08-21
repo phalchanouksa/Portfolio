@@ -26,6 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    // Create a Google-style loader overlay (indeterminate spinner)
+    const loader = document.createElement('div');
+    loader.className = 'intro-loader';
+    loader.innerHTML = `<div class="g-spinner" role="status" aria-label="Loading"></div>`;
+    introContainer.appendChild(loader);
+
     // Setup background video (muted, looped, inline) if available
     try {
         const video = document.createElement('video');
@@ -52,8 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const playPromise = video.play();
         if (playPromise && typeof playPromise.then === 'function') {
             playPromise.catch(() => {
-                // If autoplay is blocked, keep it muted and wait for any interaction (skip button)
-                // No-op: the video will start once allowed
+                // Autoplay may be blocked; continue showing loader until timeout or other assets ready
             });
         }
 
@@ -68,6 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch {}
         });
+        // Expose video on container for readiness checks
+        introContainer._bgVideo = video;
     } catch (e) {
         console.warn('Intro background video could not be initialized:', e);
     }
@@ -181,6 +188,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // Skip button functionality
     skipButton.addEventListener('click', endIntro);
 
-    // Start the intro
-    showSlide(currentSlideIndex);
+    // Preload: wait for critical assets before starting slides
+    const waitFor = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    const waitForVideoReady = () => new Promise((resolve) => {
+        const v = introContainer._bgVideo;
+        if (!v) return resolve(); // no video, nothing to wait for
+        const done = () => resolve();
+        v.addEventListener('canplay', done, { once: true });
+        v.addEventListener('loadeddata', done, { once: true });
+        v.addEventListener('error', done, { once: true });
+        // Safety timeout in case events don't fire
+        setTimeout(done, 5000);
+    });
+    const waitForFonts = (typeof document.fonts !== 'undefined' && document.fonts.ready)
+        ? document.fonts.ready.catch(() => {})
+        : Promise.resolve();
+
+    (async () => {
+        try {
+            // Wait for video/font readiness but cap total wait
+            await Promise.race([
+                Promise.all([waitForVideoReady(), waitForFonts]),
+                waitFor(7000)
+            ]);
+        } finally {
+            // Hide loader and begin intro
+            if (loader && loader.parentNode) loader.remove();
+            showSlide(currentSlideIndex);
+        }
+    })();
 });

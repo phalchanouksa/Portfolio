@@ -6,7 +6,49 @@ if (!window.location.pathname.includes('blog.html')) {
     document.head.appendChild(script);
 }
 
+// Theme: apply saved or system preference ASAP
+(function applyInitialTheme() {
+    try {
+        const saved = localStorage.getItem('theme');
+        // Default to dark when no saved preference
+        const theme = saved || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+    } catch (_) { /* no-op */ }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Theme toggle hookup
+    const toggle = document.getElementById('theme-toggle');
+    const setTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        try { localStorage.setItem('theme', theme); } catch (_) {}
+    };
+    if (toggle) {
+        toggle.addEventListener('click', (e) => {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const apply = () => setTheme(next);
+
+            // Smooth cross-fade using View Transitions API when available
+            if (!prefersReducedMotion && document.startViewTransition) {
+                document.documentElement.classList.add('theme-transition');
+                document.startViewTransition(() => {
+                    apply();
+                }).finished.finally(() => {
+                    document.documentElement.classList.remove('theme-transition');
+                });
+            } else {
+                // Fallback: brief CSS transitions via a helper class
+                document.documentElement.classList.add('theme-transition');
+                apply();
+                setTimeout(() => {
+                    document.documentElement.classList.remove('theme-transition');
+                }, 450);
+            }
+        });
+    }
     const hamburgerMenu = document.getElementById('hamburger-menu');
     const overlayNav = document.getElementById('overlay-nav');
     const navLinks = overlayNav.querySelectorAll('nav a');
@@ -153,6 +195,46 @@ document.addEventListener('DOMContentLoaded', () => {
     if (prefersReducedMotion.matches) {
         document.documentElement.style.setProperty('--animation-duration', '0s');
     }
+
+    // Scroll Reveal (progressive enhancement)
+    (function initScrollReveal() {
+        const targets = document.querySelectorAll([
+            '.project-card',
+            '.blog-post-card',
+            '.blog-post-preview',
+            '.content-container > *',
+            '.y2k-window',
+            '.tech-stack li',
+            '.contact-link-btn',
+            '.view-all-btn'
+        ].join(','));
+
+        // If user prefers reduced motion, reveal instantly
+        if (prefersReducedMotion.matches) {
+            targets.forEach(el => el.classList.add('reveal-in'));
+            return;
+        }
+
+        // Add base class for reveal
+        targets.forEach(el => el.classList.add('reveal'));
+
+        const io = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-in');
+                    // Remove base class once animated in (optional)
+                    // entry.target.classList.remove('reveal');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px 0px -10% 0px',
+            threshold: 0.1
+        });
+
+        targets.forEach(t => io.observe(t));
+    })();
 
     // Handle focus for keyboard navigation
     document.addEventListener('keydown', (e) => {

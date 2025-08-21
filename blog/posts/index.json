@@ -1,0 +1,16 @@
+[
+  {
+    "id": "2-ai-personal-reflection",
+    "title": "Why I Like AI",
+    "date": "2025-08-08",
+    "excerpt": "AI helps me make things faster. It is like a simple tool I can open anytime. I write a small idea, and it helps me turn it into something real.",
+    "file": "2-ai-personal-reflection.md"
+  },
+  {
+    "id": "1firstblogpost",
+    "title": "Testing my first blog post",
+    "date": "2025-08-04",
+    "excerpt": "This is my first blog post",
+    "file": "1firstblogpost.md"
+  }
+]

@@ -1,7 +1,8 @@
 // Blog functionality for dynamic markdown loading
 class BlogManager {
     constructor() {
-        this.posts = [
+        // Fallback list (used if manifest fetch fails)
+        this.fallbackPosts = [
             {
                 id: '2-ai-personal-reflection',
                 title: 'Why I Like AI',
@@ -15,22 +16,40 @@ class BlogManager {
                 date: '2025-08-04',
                 excerpt: 'This is my first blog post',
                 file: '1firstblogpost.md'
-            },
-            
+            }
         ];
+        this.posts = this.fallbackPosts;
         this.modal = null;
         this.init();
     }
 
-    init() {
+    async init() {
         // Setup modal
         this.setupModal();
-        
+
+        // Try to load from manifest (with fallback on error)
+        await this.loadPostsFromManifest();
+
         // Load blog posts based on current page
         if (window.location.pathname.includes('blog.html')) {
             this.loadAllPosts();
         } else {
             this.loadLatestPosts();
+        }
+    }
+
+    async loadPostsFromManifest() {
+        try {
+            const res = await fetch('blog/posts/index.json', { cache: 'no-cache' });
+            if (!res.ok) throw new Error(`Manifest HTTP ${res.status}`);
+            const data = await res.json();
+            // Basic validation and sorting newest first later in loaders
+            if (Array.isArray(data) && data.length) {
+                this.posts = data;
+            }
+        } catch (e) {
+            console.warn('Using fallback posts; failed to load manifest:', e);
+            this.posts = this.fallbackPosts;
         }
     }
 
@@ -196,10 +215,16 @@ class BlogManager {
     }
 }
 
-// Initialize blog manager when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new BlogManager();
-});
+// Initialize blog manager robustly, even if DOMContentLoaded already fired
+function initBlog() {
+    try { new BlogManager(); } catch (e) { console.error('Blog init error:', e); }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBlog);
+} else {
+    initBlog();
+}
 
 // Handle hash navigation for blog posts
 window.addEventListener('hashchange', () => {
