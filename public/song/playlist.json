@@ -1,0 +1,16 @@
+{
+    "songs": [
+        {
+            "title": "So Far Away",
+            "path": "public/song/So far away.mp3"
+        },
+        {
+            "title": "Suzume Theme Song",
+            "path": "public/song/Suzume_no_TojimariSuzume_Theme_Song.mp3"
+        },
+        {
+            "title": "悲恋白書",
+            "path": "public/song/悲恋白書（ひれんはくしょ.mp3"
+        }
+    ]
+}

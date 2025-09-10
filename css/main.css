@@ -43,8 +43,8 @@ html.theme-transition, html.theme-transition body, html.theme-transition header,
                 opacity var(--dur-med) var(--ease-spring);
 }
 
-/* Make vignette fade feel smoother during theme switch */
-html.theme-transition body::before {
+/* Make vignette/glow fade feel smoother during theme switch */
+html.theme-transition html::before {
     transition: opacity var(--dur-slow) var(--ease-spring), background var(--dur-slow) linear;
 }
 
@@ -110,12 +110,12 @@ body {
 }
 
 /* Fixed multi-radial glow overlay (universal, behind everything) */
-body::before {
+html::before {
     content: '';
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 1; /* below vignette */
+    z-index: 50; /* below vignette, above page background */
     background:
         radial-gradient(50vw 35vh at 15% 10%, var(--glow-1), transparent 60%),
         radial-gradient(45vw 30vh at 85% 15%, var(--glow-2), transparent 65%),
@@ -125,12 +125,12 @@ body::before {
 }
 
 /* Site-wide vignette overlay: subtle top & bottom fade */
-body::after {
+html::after {
     content: '';
     position: fixed;
-    inset: 0;
+    inset: 0; /* fixed to viewport */
     pointer-events: none;
-    z-index: 2; /* below header (1001), above background */
+    z-index: 500; /* above main content, below header(1001)/menus/modals */
     background-image:
         linear-gradient(to bottom,
             rgba(0, 0, 0, var(--vignette-opacity)) 0%,
