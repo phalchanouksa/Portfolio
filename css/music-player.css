@@ -1,4 +1,7 @@
 .music-player {
+    --drag-x: 0px;
+    --drag-y: 0px;
+
     position: fixed;
     bottom: 20px;
     left: 20px;
@@ -13,7 +16,17 @@
     cursor: move;
     user-select: none;
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
-    transition: all var(--dur-fast) var(--ease-spring);
+    transition: opacity var(--dur-med) var(--ease-spring), transform var(--dur-med) var(--ease-spring);
+    opacity: 0;
+    transform: translate(var(--drag-x), var(--drag-y)) scale(0.9);
+    transform-origin: bottom left;
+    pointer-events: none; /* Prevent interaction when hidden */
+}
+
+.music-player.visible {
+    opacity: 1;
+    transform: translate(var(--drag-x), var(--drag-y)) scale(1);
+    pointer-events: auto; /* Allow interaction when visible */
 }
 
 @media (max-width: 768px) {
@@ -31,17 +44,29 @@
     }
 }
 
-.music-player:hover {
-    transform: translateY(-2px);
+#music-visualizer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Behind the text and buttons */
+    opacity: 0.6;
 }
 
 .music-player-header {
+    position: relative; /* Needed for absolute positioning of canvas */
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
     padding-bottom: 4px;
     border-bottom: 1px solid var(--text-color-muted);
+}
+
+.music-player-header > * {
+    position: relative;
+    z-index: 2; /* Ensure content is above the canvas */
 }
 
 .music-player-title {
@@ -115,16 +140,7 @@
     color: var(--text-color-muted);
 }
 
-.music-player.minimized {
-    width: auto;
-    padding: 5px 10px;
-}
-
-.music-player.minimized .music-player-controls,
-.music-player.minimized .music-player-progress,
-.music-player.minimized .music-player-time {
-    display: none;
-}
+/* Removed minimize/maximize functionality */
 
 .music-player-playlist {
     max-height: 100px;

@@ -1,10 +1,4 @@
-// Import blog functionality if on home page
-if (!window.location.pathname.includes('blog.html')) {
-    // Load blog posts on home page
-    const script = document.createElement('script');
-    script.src = 'js/blog.js';
-    document.head.appendChild(script);
-}
+// Blog functionality is now loaded globally in SPA
 
 // Theme: apply saved or system preference ASAP
 (function applyInitialTheme() {

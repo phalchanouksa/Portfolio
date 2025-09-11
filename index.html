@@ -25,6 +25,12 @@
             <button id="hamburger-menu" class="icon-button">
                 <span class="hamburger-line"></span>
             </button>
+            <!-- Back button - will be shown/hidden by SPA router -->
+            <a href="/" class="icon-button" id="back-button" style="display: none;" aria-label="Back to home">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+            </a>
             <!-- Theme toggle: celestial button -->
             <button id="theme-toggle" class="icon-button theme-toggle" aria-label="Toggle theme" title="Toggle theme">
                 <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -43,21 +49,23 @@
     <div id="overlay-nav" class="overlay-menu">
         <div class="overlay-content">
             <nav>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#blog">Blog</a>
-                <a href="#contact">Contact</a>
+                <a href="/">Home</a>
+                <a href="/#about">About</a>
+                <a href="/#projects">Projects</a>
+                <a href="/blog">Blog</a>
+                <a href="/#contact">Contact</a>
             </nav>
         </div>
     </div>
 
     <main>
         <div class="content-container">
-            <section id="about">
+            <!-- Home Page Sections -->
+            <section id="home-about" class="page-section">
                 <div class="y2k-window">
                     <div class="window-content">
                         <h2>Welcome!</h2>
-                        <p>My name is Phal Chan Ouksa. I have always been fascinated by how computers work beneath the surface from the logic that drives their operations to the hidden processes that make technology come alive. I enjoy exploring the inner workings of systems, understanding how hardware and software interact, and uncovering the principles that power the digital world we use every day. For me, studying Computer Science isn't just about learning to code, it's about diving deep into the why and how behind technology, so I can appreciate it, improve it.</p>
+                        <p>My name is Phal Chanouksa. I have always been fascinated by how computers work beneath the surface from the logic that drives their operations to the hidden processes that make technology come alive. I enjoy exploring the inner workings of systems, understanding how hardware and software interact, and uncovering the principles that power the digital world we use every day. For me, studying Computer Science isn't just about learning to code, it's about diving deep into the why and how behind technology, so I can appreciate it, improve it.</p>
                         <h3>My Hobbies</h3>
                         <ul class="skills-list">
                             <li>Movie</li>
@@ -71,7 +79,7 @@
 
             <div class="separator"></div>
 
-            <section id="projects">
+            <section id="home-projects" class="page-section">
                 <h2>Projects</h2>
                 <div class="project-grid">
                     <!-- Project 1 -->
@@ -121,21 +129,21 @@
 
             <div class="separator"></div>
 
-            <section id="blog">
+            <section id="home-blog" class="page-section">
                 <h2>Latest Blog Posts</h2>
                 <div class="blog-preview">
                     <div id="blog-posts-container" class="blog-posts">
                         <!-- Blog posts will be loaded dynamically -->
                     </div>
                     <div class="blog-actions">
-                        <a href="blog.html" class="view-all-btn">View All Posts</a>
+                        <a href="/blog" class="view-all-btn">View All Posts</a>
                     </div>
                 </div>
             </section>
 
             <div class="separator"></div>
 
-            <section id="contact">
+            <section id="home-contact" class="page-section">
                 <h2>Contact</h2>
                 <p>Feel free to reach out. You can find me on the following platforms:</p>
                 <div class="contact-links">
@@ -143,6 +151,24 @@
                     <a href="https://www.instagram.com/chan.ouksa/" target="_blank" class="contact-link-btn">Instagram</a>
                     <a href="https://www.facebook.com/chan.ouksa.16/" target="_blank" class="contact-link-btn">Facebook</a>
                     <a href="https://t.me/ChanOuksa" target="_blank" class="contact-link-btn">Telegram</a>
+                </div>
+            </section>
+
+            <!-- Blog Page Sections -->
+            <section id="blog-header" class="page-section" style="display: none;">
+                <div class="y2k-window">
+                    <div class="window-content">
+                        <h1>Blog Posts</h1>
+                        <p>Thoughts, tutorials, and experiences from my coding journey</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="separator" id="blog-separator" style="display: none;"></div>
+
+            <section id="all-blog-posts" class="page-section" style="display: none;">
+                <div id="all-posts-container" class="blog-posts-grid">
+                    <!-- All blog posts will be loaded dynamically -->
                 </div>
             </section>
         </div>
@@ -162,9 +188,11 @@
         </div>
     </div>
 
+    <script src="js/spa-router.js"></script>
     <script src="js/cinematic-intro.js"></script>
     <script src="js/script.js"></script>
     <script src="js/ui-interactions.js"></script>
+    <script src="js/blog.js"></script>
     <script type="module">
         import MusicPlayer from './js/music-player.js';
         new MusicPlayer();
@@ -180,6 +208,16 @@
       <span class="sparkle s2"></span>
       <span class="sparkle s3"></span>
     </a>
+
+    <!-- Floating Music Button -->
+    <button class="float-music" id="music-toggle" aria-label="Toggle Music Player">
+      <svg class="music-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+      </svg>
+      <span class="sparkle s1"></span>
+      <span class="sparkle s2"></span>
+      <span class="sparkle s3"></span>
+    </button>
 
 </body>
 </html>

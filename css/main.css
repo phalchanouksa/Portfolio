@@ -43,6 +43,28 @@ html.theme-transition, html.theme-transition body, html.theme-transition header,
                 opacity var(--dur-med) var(--ease-spring);
 }
 
+/* SPA Page Transitions */
+.page-section {
+    transition: opacity var(--dur-med) var(--ease-spring),
+                transform var(--dur-med) var(--ease-spring);
+}
+
+.page-section[style*="display: none"] {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.page-section[style*="display: block"] {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Main content transition for page changes */
+#main-content.page-transition .page-section {
+    transition: opacity var(--dur-med) var(--ease-spring),
+                transform var(--dur-med) var(--ease-spring);
+}
+
 /* Make vignette/glow fade feel smoother during theme switch */
 html.theme-transition html::before {
     transition: opacity var(--dur-slow) var(--ease-spring), background var(--dur-slow) linear;

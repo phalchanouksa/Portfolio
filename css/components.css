@@ -37,25 +37,25 @@ body.nav-active .social-links {
 
 /* Base style for all navbar buttons */
 .icon-button {
-    background-color: var(--header-bg);
-    color: var(--header-text);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    min-height: 48px;
-    border-radius: 10px;
-    font-size: 24px;
-    line-height: 1;
-    box-shadow: 4px 4px 0px #00000040;
-    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    overflow: hidden;
-    padding: 0;
-    border: none;
-    cursor: pointer;
+background-color: var(--header-bg);
+  color: var(--header-text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 10px;
+  font-size: 24px;
+  line-height: 1;
+  box-shadow: 4px 4px 0px #00000040;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  cursor: pointer;
 }
 
 .icon-button:hover {
@@ -67,6 +67,8 @@ body.nav-active .social-links {
     transform: translate(2px, 2px) scale(0.97);
     box-shadow: 1px 1px 0px #00000040;
 }
+
+/* Back button inherits .icon-button styles for identical alignment */
 
 /* Ensure hamburger button inherits same shape */
 #hamburger-menu {
@@ -185,40 +187,21 @@ h2 {
     font-size: 62px;
     text-decoration: none;
     margin-bottom: 20px;
-    transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
-    transform: translateX(-40px) translateY(15px) scale(0.9);
     opacity: 0;
-    animation-fill-mode: forwards;
-    filter: blur(2px);
+    transform: translateY(20px);
+    transition: opacity 0.5s var(--ease-spring), transform 0.5s var(--ease-spring);
 }
 
 .overlay-menu.active nav a {
-    animation: slideInEnhanced 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.overlay-menu.active nav a:nth-child(1) { animation-delay: 0.1s; }
-.overlay-menu.active nav a:nth-child(2) { animation-delay: 0.15s; }
-.overlay-menu.active nav a:nth-child(3) { animation-delay: 0.2s; }
-.overlay-menu.active nav a:nth-child(4) { animation-delay: 0.25s; }
-
-/* Keyframe animations */
-@keyframes slideInEnhanced {
-    0% {
-        transform: translateX(-40px) translateY(15px) scale(0.9);
-        opacity: 0;
-        filter: blur(2px);
-    }
-    60% {
-        transform: translateX(-5px) translateY(2px) scale(0.98);
-        opacity: 0.8;
-        filter: blur(0.5px);
-    }
-    100% {
-        transform: translateX(0) translateY(0) scale(1);
-        opacity: 1;
-        filter: blur(0px);
-    }
-}
+.overlay-menu.active nav a:nth-child(1) { transition-delay: 0.10s; }
+.overlay-menu.active nav a:nth-child(2) { transition-delay: 0.15s; }
+.overlay-menu.active nav a:nth-child(3) { transition-delay: 0.20s; }
+.overlay-menu.active nav a:nth-child(4) { transition-delay: 0.25s; }
+.overlay-menu.active nav a:nth-child(5) { transition-delay: 0.30s; }
 
 @keyframes slideInLeft {
     from {
@@ -493,12 +476,46 @@ body.nav-active #hamburger-menu {
     animation: gh-bob 3.2s var(--ease-spring, cubic-bezier(0.22,1,0.36,1)) infinite;
 }
 
+/* Floating Music Button */
+.float-music {
+    position: fixed;
+    left: 22px;
+    bottom: 22px;
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    background: var(--header-bg);
+    color: var(--header-text);
+    border: 3px solid var(--text-color);
+    box-shadow: 6px 6px 0px #00000040;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 1100;
+    transform: translateZ(0);
+    animation: music-bob 3.5s var(--ease-spring, cubic-bezier(0.22,1,0.36,1)) infinite;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
 .float-github:hover {
     transform: translateY(-4px);
     box-shadow: 8px 8px 0px #00000055;
 }
 
 .float-github:active {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0px #00000040;
+}
+
+.float-music:hover {
+    transform: translateY(-4px);
+    box-shadow: 8px 8px 0px #00000055;
+}
+
+.float-music:active {
     transform: translate(2px, 2px);
     box-shadow: 3px 3px 0px #00000040;
 }
@@ -510,8 +527,16 @@ body.nav-active #hamburger-menu {
     animation: gh-wiggle 2.8s ease-in-out infinite;
 }
 
+.float-music .music-icon {
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,0.15));
+    animation: music-pulse 2.5s ease-in-out infinite;
+}
+
 /* Pixel sparkles */
-.float-github .sparkle {
+.float-github .sparkle,
+.float-music .sparkle {
     position: absolute;
     width: 6px;
     height: 6px;
@@ -525,9 +550,18 @@ body.nav-active #hamburger-menu {
 .float-github .s2 { bottom: -10px; right: -10px; animation: sparkle 2.2s ease-in-out infinite 0.3s; }
 .float-github .s3 { top: -12px; right: -6px; animation: sparkle 2.6s ease-in-out infinite 0.6s; }
 
+.float-music .s1 { top: -8px; left: -8px; animation: sparkle 2.0s ease-in-out infinite; }
+.float-music .s2 { bottom: -10px; right: -10px; animation: sparkle 2.4s ease-in-out infinite 0.4s; }
+.float-music .s3 { top: -12px; right: -6px; animation: sparkle 2.8s ease-in-out infinite 0.8s; }
+
 @keyframes gh-bob {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
+}
+
+@keyframes music-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 @keyframes gh-wiggle {
@@ -536,6 +570,11 @@ body.nav-active #hamburger-menu {
   40% { transform: rotate(2deg); }
   60% { transform: rotate(-2deg); }
   80% { transform: rotate(1deg); }
+}
+
+@keyframes music-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 
 @keyframes sparkle {
@@ -547,6 +586,9 @@ body.nav-active #hamburger-menu {
   .float-github { animation: none; }
   .float-github .gh-icon { animation: none; }
   .float-github .sparkle { animation: none; }
+  .float-music { animation: none; }
+  .float-music .music-icon { animation: none; }
+  .float-music .sparkle { animation: none; }
 }
 
 /* ========================================

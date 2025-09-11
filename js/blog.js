@@ -84,6 +84,9 @@ class BlogManager {
         // Ensure card grid layout on home section
         container.classList.add('blog-posts-grid');
 
+        // Clear existing posts first to prevent duplication
+        container.innerHTML = '';
+
         // Sort by date (newest first) and show only the latest 2 on home page
         const latestPosts = [...this.posts]
             .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -99,6 +102,9 @@ class BlogManager {
     async loadAllPosts() {
         const container = document.getElementById('all-posts-container');
         if (!container) return;
+
+        // Clear existing posts first to prevent duplication
+        container.innerHTML = '';
 
         // Sort by date (newest first) for blog listing page
         const sorted = [...this.posts].sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -217,7 +223,11 @@ class BlogManager {
 
 // Initialize blog manager robustly, even if DOMContentLoaded already fired
 function initBlog() {
-    try { new BlogManager(); } catch (e) { console.error('Blog init error:', e); }
+    try { 
+        if (!window.blogManager) {
+            window.blogManager = new BlogManager();
+        }
+    } catch (e) { console.error('Blog init error:', e); }
 }
 
 if (document.readyState === 'loading') {

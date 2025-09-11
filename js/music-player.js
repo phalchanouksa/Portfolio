@@ -1,3 +1,5 @@
+import Visualizer from './visualizer.js';
+
 class MusicPlayer {
     constructor() {
         // Use singleton pattern to ensure only one instance exists
@@ -9,6 +11,9 @@ class MusicPlayer {
         this.songs = [];
         this.currentSongIndex = parseInt(localStorage.getItem('music-currentSongIndex')) || 0;
         this.isPlaying = localStorage.getItem('music-isPlaying') === 'true';
+        this.xOffset = 0;
+        this.yOffset = 0;
+        this.visualizer = null;
         
         // Use global audio instance if exists, otherwise create new
         this.audio = window.globalAudioPlayer || new Audio();
@@ -100,9 +105,9 @@ class MusicPlayer {
         player.className = 'music-player';
         player.innerHTML = `
             <div class="music-player-header">
+                <canvas id="music-visualizer"></canvas>
                 <h3 class="music-player-title">Select Track</h3>
                 <div>
-                    <button class="music-player-button" id="minimize-player" title="Minimize">_</button>
                     <button class="music-player-button" id="close-player" title="Close">×</button>
                 </div>
             </div>
@@ -128,25 +133,29 @@ class MusicPlayer {
         `;
 
         document.body.appendChild(player);
+        player.style.setProperty('--drag-x', `${this.xOffset}px`);
+        player.style.setProperty('--drag-y', `${this.yOffset}px`);
         this.bindEvents();
+        this.bindToggleButton();
+
+        const canvas = document.getElementById('music-visualizer');
+        if (canvas) {
+            this.visualizer = new Visualizer(this.audio, canvas);
+        }
     }
 
     initDraggable() {
         const player = document.querySelector('.music-player');
         let isDragging = false;
-        let currentX;
-        let currentY;
         let initialX;
         let initialY;
-        let xOffset = 0;
-        let yOffset = 0;
 
         player.addEventListener('mousedown', (e) => {
             if (e.target.classList.contains('music-player-button')) return;
-            
-            initialX = e.clientX - xOffset;
-            initialY = e.clientY - yOffset;
-            
+
+            initialX = e.clientX - this.xOffset;
+            initialY = e.clientY - this.yOffset;
+
             if (e.target === player || e.target.closest('.music-player-header')) {
                 isDragging = true;
             }
@@ -156,13 +165,14 @@ class MusicPlayer {
             if (!isDragging) return;
 
             e.preventDefault();
-            currentX = e.clientX - initialX;
-            currentY = e.clientY - initialY;
+            const currentX = e.clientX - initialX;
+            const currentY = e.clientY - initialY;
 
-            xOffset = currentX;
-            yOffset = currentY;
+            this.xOffset = currentX;
+            this.yOffset = currentY;
 
-            player.style.transform = `translate(${currentX}px, ${currentY}px)`;
+            player.style.setProperty('--drag-x', `${currentX}px`);
+            player.style.setProperty('--drag-y', `${currentY}px`);
         });
 
         document.addEventListener('mouseup', () => {
@@ -174,7 +184,6 @@ class MusicPlayer {
         const playPauseBtn = document.getElementById('play-pause');
         const prevBtn = document.getElementById('prev-song');
         const nextBtn = document.getElementById('next-song');
-        const minimizeBtn = document.getElementById('minimize-player');
         const closeBtn = document.getElementById('close-player');
         const progressBar = document.querySelector('.music-player-progress');
         const playlist = document.querySelector('.music-player-playlist');
@@ -182,8 +191,7 @@ class MusicPlayer {
         playPauseBtn.addEventListener('click', () => this.togglePlay());
         prevBtn.addEventListener('click', () => this.prevSong());
         nextBtn.addEventListener('click', () => this.nextSong());
-        minimizeBtn.addEventListener('click', () => this.toggleMinimize());
-        closeBtn.addEventListener('click', () => this.close());
+        closeBtn.addEventListener('click', () => this.hide());
         
         progressBar.addEventListener('click', (e) => {
             const rect = progressBar.getBoundingClientRect();
@@ -298,14 +306,48 @@ class MusicPlayer {
         }
     }
 
-    toggleMinimize() {
+    bindToggleButton() {
+        const musicToggle = document.getElementById('music-toggle');
+        if (musicToggle) {
+            musicToggle.addEventListener('click', () => this.toggle());
+        }
+    }
+
+    toggle() {
         const player = document.querySelector('.music-player');
-        player.classList.toggle('minimized');
+        if (player.classList.contains('visible')) {
+            this.hide();
+        } else {
+            this.show();
+        }
+    }
+
+    show() {
+        const player = document.querySelector('.music-player');
+        player.classList.add('visible');
+        const musicToggle = document.getElementById('music-toggle');
+        if (musicToggle) {
+            musicToggle.style.display = 'none';
+        }
+        if (this.visualizer) {
+            this.visualizer.start();
+        }
+    }
+
+    hide() {
+        const player = document.querySelector('.music-player');
+        player.classList.remove('visible');
+        const musicToggle = document.getElementById('music-toggle');
+        if (musicToggle) {
+            musicToggle.style.display = 'inline-flex';
+        }
+        if (this.visualizer) {
+            this.visualizer.stop();
+        }
     }
 
     close() {
-        this.audio.pause();
-        document.querySelector('.music-player').remove();
+        this.hide();
     }
 
     formatTime(seconds) {
