@@ -1,6 +1,8 @@
 // SPA Router for Portfolio Website
 class SPARouter {
     constructor() {
+        // Determine base path for GitHub Pages project sites and local
+        this.basePath = this.computeBasePath();
         this.routes = {
             '/': 'home',
             '/blog': 'blog',
@@ -38,19 +40,38 @@ class SPARouter {
     }
 
     navigate(path) {
-        // Clean up the path
-        const cleanPath = path.startsWith('/') ? path : '/' + path;
-        
+        // Handle hash-only navigation
+        if (path.startsWith('#')) {
+            const targetUrl = this.withBaseHash(path);
+            if (window.location.href !== targetUrl) {
+                window.history.pushState({}, '', targetUrl);
+            }
+            this.handleRoute();
+            return;
+        }
+
+        // Clean to relative path (no leading slash)
+        const rel = path.startsWith('/') ? path.slice(1) : path;
+        const targetPath = rel.length ? this.basePath + rel : this.basePath;
+
         // Update URL without page reload
-        if (window.location.pathname !== cleanPath) {
-            window.history.pushState({}, '', cleanPath);
+        const current = window.location.pathname + window.location.search + window.location.hash;
+        const next = new URL(targetPath, window.location.origin).pathname;
+        if (window.location.pathname !== next) {
+            window.history.pushState({}, '', targetPath);
         }
         
         this.handleRoute();
     }
 
     handleRoute() {
-        const path = window.location.pathname;
+        // Strip basePath from current pathname for route matching
+        let path = window.location.pathname;
+        const bp = this.basePath.endsWith('/') ? this.basePath.slice(0, -1) : this.basePath;
+        if (bp && bp !== '/' && path.startsWith(bp)) {
+            path = path.slice(bp.length);
+            if (!path.startsWith('/')) path = '/' + path;
+        }
         const hash = window.location.hash;
         const route = this.routes[path] || 'home';
         
@@ -203,10 +224,12 @@ class SPARouter {
             if (href) {
                 // Keep hash-based navigation for sections but ensure they work with SPA
                 if (href.includes('#about') || href.includes('#projects') || href.includes('#contact')) {
-                    // Keep the hash for section navigation
-                    link.setAttribute('href', '/#' + href.split('#')[1]);
+                    // Point to base + hash for SPA navigation under project path
+                    link.setAttribute('href', this.withBaseHash('#' + href.split('#')[1]));
                 } else if (href.includes('blog.html')) {
-                    link.setAttribute('href', '/blog');
+                    link.setAttribute('href', this.basePath + 'blog');
+                } else if (href === '/' || href === './' || href === '.') {
+                    link.setAttribute('href', this.basePath);
                 }
             }
         });
@@ -254,3 +277,29 @@ class SPARouter {
 document.addEventListener('DOMContentLoaded', () => {
     window.spaRouter = new SPARouter();
 });
+
+// Helpers added to the class
+SPARouter.prototype.computeBasePath = function () {
+    try {
+        const baseEl = document.querySelector('base[href]');
+        if (baseEl) {
+            let href = baseEl.getAttribute('href') || '/';
+            if (!href.endsWith('/')) href += '/';
+            return href;
+        }
+        if (location.hostname.endsWith('github.io')) {
+            const parts = location.pathname.split('/').filter(Boolean);
+            if (parts.length > 0) {
+                return `/${parts[0]}/`;
+            }
+        }
+        return '/';
+    } catch (_) {
+        return '/';
+    }
+};
+
+SPARouter.prototype.withBaseHash = function (hash) {
+    const h = hash.startsWith('#') ? hash : '#' + hash;
+    return this.basePath + h;
+};
