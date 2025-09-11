@@ -20,6 +20,8 @@ class BlogManager {
         ];
         this.posts = this.fallbackPosts;
         this.modal = null;
+        // Base path for assets (works on GitHub Pages project sites and locally)
+        this.basePath = this.computeBasePath();
         this.init();
     }
 
@@ -40,7 +42,7 @@ class BlogManager {
 
     async loadPostsFromManifest() {
         try {
-            const res = await fetch('blog/posts/index.json', { cache: 'no-cache' });
+            const res = await fetch(`${this.basePath}blog/posts/index.json`, { cache: 'no-cache' });
             if (!res.ok) throw new Error(`Manifest HTTP ${res.status}`);
             const data = await res.json();
             // Basic validation and sorting newest first later in loaders
@@ -196,7 +198,7 @@ class BlogManager {
 
     async fetchPostContent(filename) {
         try {
-            const response = await fetch(`blog/posts/${filename}`);
+            const response = await fetch(`${this.basePath}blog/posts/${filename}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -218,6 +220,35 @@ class BlogManager {
     formatDate(dateString) {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString('en-US', options);
+    }
+
+    // Determine the correct base path for assets regardless of current route
+    computeBasePath() {
+        try {
+            // If a <base> tag is present, trust it
+            const baseEl = document.querySelector('base[href]');
+            if (baseEl) {
+                let href = baseEl.getAttribute('href') || '/';
+                // Ensure trailing slash
+                if (!href.endsWith('/')) href += '/';
+                return href;
+            }
+
+            // On GitHub Pages project sites, the path is /<repo>/...
+            // e.g., https://username.github.io/Portfolio/...
+            if (location.hostname.endsWith('github.io')) {
+                const parts = location.pathname.split('/').filter(Boolean);
+                // If first part exists, treat it as repo name
+                if (parts.length > 0) {
+                    return `/${parts[0]}/`;
+                }
+            }
+
+            // Default to root
+            return '/';
+        } catch (_) {
+            return '/';
+        }
     }
 }
 
